@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cm4xai5es7y8c"]
+
+[ext_resource type="Script" uid="uid://c5x8sm0ntjriv" path="res://scripts/player.gd" id="1_o4maj"]
+[ext_resource type="PackedScene" uid="uid://cu2gewcpqmm25" path="res://scenes/projectile.tscn" id="2_dqkch"]
+[ext_resource type="Script" uid="uid://caik0bobwtkwm" path="res://scripts/PlayerCamera3D.gd" id="2_js73g"]
+[ext_resource type="Texture2D" uid="uid://cwld5lao4a1ym" path="res://art/texture1.png" id="3_08q75"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_65nyi"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4wel0"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_o4maj")
+projectile = ExtResource("2_dqkch")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_65nyi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_4wel0")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.766312, 0)
+fov = 90.0
+script = ExtResource("2_js73g")
+
+[node name="crosshair" type="TextureRect" parent="Camera3D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_08q75")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Marker3D" type="Marker3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.53362817)

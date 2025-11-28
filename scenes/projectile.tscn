@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://cu2gewcpqmm25"]
+
+[ext_resource type="Script" uid="uid://drfaoemqiykoo" path="res://scripts/projectile.gd" id="1_c8fcr"]
+[ext_resource type="Texture2D" uid="uid://cwld5lao4a1ym" path="res://art/texture1.png" id="2_q3m7n"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vswed"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kjs8p"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6aapk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6aapk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_softn"]
+albedo_texture = ExtResource("2_q3m7n")
+
+[sub_resource type="SphereMesh" id="SphereMesh_6q2a6"]
+
+[node name="Projectile" type="RigidBody3D"]
+script = ExtResource("1_c8fcr")
+speed = 12.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, -8.742278e-09, -0.2, 0, 0.2, -8.742278e-09, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_vswed")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_kjs8p")
+
+[node name="HitArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
+transform = Transform3D(0.25, 0, 0, 0, -1.0927847e-08, -0.25, 0, 0.25, -1.0927847e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_6aapk")
+
+[node name="ExplArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplArea"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
+shape = SubResource("SphereShape3D_6aapk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ExplArea/CollisionShape3D"]
+material_override = SubResource("StandardMaterial3D_softn")
+mesh = SubResource("SphereMesh_6q2a6")
+
+[connection signal="body_entered" from="HitArea" to="." method="_on_area_3d_body_entered"]
