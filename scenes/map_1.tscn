@@ -9,7 +9,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_d13yl"]
 size = Vector3(100, 1, 50)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t58ui"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0dnla"]
 albedo_texture = ExtResource("1_sxjc7")
 
 [sub_resource type="BoxMesh" id="BoxMesh_jxpsv"]
@@ -26,7 +26,7 @@ collision_mask = 3
 shape = SubResource("BoxShape3D_d13yl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CollisionShape3D"]
-material_override = SubResource("StandardMaterial3D_t58ui")
+material_override = SubResource("StandardMaterial3D_0dnla")
 mesh = SubResource("BoxMesh_jxpsv")
 skeleton = NodePath("../..")
 
@@ -56,3 +56,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.149364, 1.5588121, 12.997
 
 [node name="wall" parent="." instance=ExtResource("5_0dnla")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -19, 2.8857474, 12.882055)
+
+[node name="wall2" parent="." instance=ExtResource("5_0dnla")]
+transform = Transform3D(1.4142135, -0.70710677, 0, 1.4142135, 0.70710677, 0, 0, 0, 1, -12.518368, 3.4536085, -4.486688)

@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+
+const DECAL_BLACK = preload("uid://cmj0ryqpeodd4")
 @export var speed: float = 2.0
 @onready var expl_area: Area3D = $ExplArea
 @onready var collision_shape_3d: CollisionShape3D = $ExplArea/CollisionShape3D
@@ -19,7 +21,7 @@ func _process(delta: float) -> void:
 	
 	if not exploding:
 		return
-	print(max_expl_dmg)
+	#print(max_expl_dmg)
 	var expand = expansion_speed * delta
 	collision_shape_3d.scale += Vector3.ONE * expand
 	collision_shape_3d.force_update_transform()
@@ -71,4 +73,12 @@ func _on_area_3d_body_entered(_body: Node3D) -> void:
 		visible = false
 		exploding = true
 		repeat = true
+		
+		var p = DECAL_BLACK.instantiate()
+		p.position = global_position
+
+		
+		p.rotation.y = global_rotation.y
+		print(global_rotation,p.rotation)
+		add_sibling(p)
 	

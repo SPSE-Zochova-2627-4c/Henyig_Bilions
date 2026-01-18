@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 @export var hp: int = 200
-@export var explosion_dramaticism: float = 0.2
+@export var explosion_dramaticism: float = 2
 
 
 func _process(_delta):

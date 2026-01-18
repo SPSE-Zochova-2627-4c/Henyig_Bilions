@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmj0ryqpeodd4"]
+
+[ext_resource type="Script" uid="uid://ec6m0stvvfe0" path="res://scripts/decal_black.gd" id="1_50hyy"]
+[ext_resource type="Texture2D" uid="uid://d4kjt2ks6qn3q" path="res://art/texture2.png" id="1_n1q73"]
+
+[node name="decal_black" type="Node3D"]
+script = ExtResource("1_50hyy")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.2, 0.2)
+size = Vector3(2, 1.5, 2)
+texture_albedo = ExtResource("1_n1q73")
+normal_fade = 0.7
+upper_fade = 0.6
+lower_fade = 0.6
+distance_fade_begin = 0.0
+
+[node name="Decal2" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0.2, 0.2, 0.2)
+size = Vector3(2, 1.5, 2)
+texture_albedo = ExtResource("1_n1q73")
+normal_fade = 0.7
+upper_fade = 1.0
+lower_fade = 1.0
+distance_fade_begin = 0.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
