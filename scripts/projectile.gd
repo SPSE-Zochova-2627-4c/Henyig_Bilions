@@ -79,6 +79,6 @@ func _on_area_3d_body_entered(_body: Node3D) -> void:
 
 		
 		p.rotation.y = global_rotation.y
-		print(global_rotation,p.rotation)
+		#print(global_rotation,p.rotation)
 		add_sibling(p)
 	

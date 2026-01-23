@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
-const DECAL_BLACK = preload("uid://cmj0ryqpeodd4")
+const J = preload("uid://uuo0ujb2u4yh")
+
 @export var hitscn_dmg: int = 40
 @export var projectile:PackedScene
 @onready var camera_3d: Camera3D = $Camera3D
@@ -60,18 +61,23 @@ func shoot_projectile():
 	p.position = marker_3d.global_position
 	p.rotation = marker_3d.global_rotation
 	add_sibling(p)
-
-
-
+	
+	
+func spawn(pos: Vector3, normal: Vector3):
+	var p = J.instantiate()
+	var col = ray_cast_3d.get_collider()
+	col.add_sibling(p)
+	p.position = pos
+	if normal != Vector3.UP:
+		# look in the direction of the normal
+		p.look_at(pos + normal, Vector3.UP)
+		# then look "up" from there so the decal projects "down"
+		p.transform = p.transform.rotated_local(Vector3.RIGHT, PI/2.0)
+	p.rotate(normal, randf_range(0, 2*PI))
 
 func hitscan():
 	if ray_cast_3d.is_colliding():
-		var p = DECAL_BLACK.instantiate()
-		var col = ray_cast_3d.get_collider()
-		
-		col.add_sibling(p)
-		p.position = ray_cast_3d.get_collision_point()
-		p.rotation.y = rotation.y
+		spawn(ray_cast_3d.get_collision_point(), ray_cast_3d.get_collision_normal())
 		
 		if ray_cast_3d.get_collider().has_method("damage"):
 			ray_cast_3d.get_collider().damage(hitscn_dmg)

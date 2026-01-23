@@ -7,22 +7,53 @@
 script = ExtResource("1_50hyy")
 
 [node name="Decal" type="Decal" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.2, 0.2)
-size = Vector3(2, 1.5, 2)
-texture_albedo = ExtResource("1_n1q73")
-normal_fade = 0.7
-upper_fade = 0.6
-lower_fade = 0.6
-distance_fade_begin = 0.0
-
-[node name="Decal2" type="Decal" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0.2, 0.2, 0.2)
 size = Vector3(2, 1.5, 2)
 texture_albedo = ExtResource("1_n1q73")
 normal_fade = 0.7
 upper_fade = 1.0
 lower_fade = 1.0
 distance_fade_begin = 0.0
+cull_mask = 1047680
+
+[node name="Decal2" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0)
+size = Vector3(2, 1.5, 2)
+texture_albedo = ExtResource("1_n1q73")
+normal_fade = 0.7
+upper_fade = 1.0
+lower_fade = 1.0
+distance_fade_begin = 0.0
+cull_mask = 1047680
+
+[node name="Decal3" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 0, 0)
+size = Vector3(2, 1.5, 2)
+texture_albedo = ExtResource("1_n1q73")
+normal_fade = 0.7
+upper_fade = 1.0
+lower_fade = 1.0
+distance_fade_begin = 0.0
+cull_mask = 1047680
+
+[node name="Decal4" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.7071067, -0.7071067, 0, 0.7071067, -0.7071067, 0, 0, 0)
+size = Vector3(2, 1.5, 2)
+texture_albedo = ExtResource("1_n1q73")
+normal_fade = 0.7
+upper_fade = 1.0
+lower_fade = 1.0
+distance_fade_begin = 0.0
+cull_mask = 1047680
+
+[node name="Decal5" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.9999998, 8.742276e-08, 0, -8.742276e-08, -0.9999998, 0, 0, 0)
+size = Vector3(2, 1.5, 2)
+texture_albedo = ExtResource("1_n1q73")
+normal_fade = 0.7
+upper_fade = 1.0
+lower_fade = 1.0
+distance_fade_begin = 0.0
+cull_mask = 1047680
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0

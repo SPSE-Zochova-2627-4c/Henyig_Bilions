@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://uuo0ujb2u4yh"]
+
+[ext_resource type="Texture2D" uid="uid://d4kjt2ks6qn3q" path="res://art/texture2.png" id="1_jyypd"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Decal" type="Decal" parent="."]
+texture_albedo = ExtResource("1_jyypd")
+cull_mask = 1047680

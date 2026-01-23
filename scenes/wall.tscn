@@ -13,11 +13,12 @@ size = Vector3(1, 10, 10)
 
 [node name="wall" type="StaticBody3D" groups=["wall"]]
 collision_layer = 3
-collision_mask = 3
+collision_mask = 131
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_2ktk7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+layers = 129
 material_override = SubResource("StandardMaterial3D_e00m8")
 mesh = SubResource("BoxMesh_tdtm6")
