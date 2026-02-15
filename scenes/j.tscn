@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://uuo0ujb2u4yh"]
 
 [ext_resource type="Texture2D" uid="uid://d4kjt2ks6qn3q" path="res://art/texture2.png" id="1_jyypd"]
-[ext_resource type="Script" uid="uid://djdlkn74kv3bx" path="res://scenes/j_decal.gd" id="1_qjynt"]
+[ext_resource type="Script" uid="uid://djdlkn74kv3bx" path="res://scripts/j_decal.gd" id="1_qjynt"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_qjynt")
 
 [node name="Decal" type="Decal" parent="."]
+size = Vector3(0.2, 1, 0.2)
 texture_albedo = ExtResource("1_jyypd")
 cull_mask = 1047680
 

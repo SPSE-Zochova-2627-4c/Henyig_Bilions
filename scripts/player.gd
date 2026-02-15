@@ -1,23 +1,40 @@
 extends CharacterBody3D
 
-const J = preload("uid://uuo0ujb2u4yh")
+const pistol = preload("uid://dureo6lwixg0")
+const hand = preload("uid://c31fi4iayokx6")
+const RPG = preload("uid://jcobrh6oadkh")
+const KNIFE = preload("uid://dfvk5kghbnrnb")
 
+@onready var canvas_layer: CanvasLayer = $Camera3D/CanvasLayer
 @export var hitscn_dmg: int = 40
-@export var projectile:PackedScene
+
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var marker_3d: Marker3D = $Camera3D/Marker3D
 @export var explosion_dramaticism: float = 0.1
 @onready var ray_cast_3d: RayCast3D = $Camera3D/Marker3D/RayCast3D
 
-const SPEED = 5.0
+const SPEED = 8.0
 const JUMP_VELOCITY = 4.5
 var ray_range = 2000
 var mouse_sensitivity = 0.002
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var hp = 500
 
+
+
+
+var in_hand = hand.instantiate()
+var in_hand_scene = hand
+var prev_hand_scene = hand
+@export var pistol_ammo = 48
+@export var rpg_ammo = 24
+var pistol_clip: int = 0
+var rpg_clip: int = 0
 func _ready():
+	add_child(in_hand)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -28,6 +45,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
+
+
+
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
@@ -35,10 +55,13 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+	elif is_on_floor():
+		velocity.x = move_toward(velocity.x, 0, 0.5)
+		velocity.z = move_toward(velocity.z, 0, 0.5)
 	move_and_slide()
+
+
+
 
 
 func _input(event):
@@ -46,41 +69,41 @@ func _input(event):
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(90), deg_to_rad(90))
-	
-	if event.is_action_pressed("right_click"):
-		shoot_projectile()	
+
+
+	if event.is_action_pressed("quick_switch"):
+		in_hand.queue_free()
+		in_hand = prev_hand_scene.instantiate()
+		var values = [prev_hand_scene, in_hand_scene]
+		swap(values)
+		prev_hand_scene = values[0]
+		in_hand_scene = values[1]
+		self.canvas_layer.add_child(in_hand)
+
+	if event.is_action_pressed("1"):
+		prev_hand_scene = in_hand_scene
+		in_hand_scene = KNIFE
+		in_hand.queue_free()
+		in_hand = KNIFE.instantiate()
+		self.canvas_layer.add_child(in_hand)
 		
-	if event.is_action_pressed("left_click"):
-		hitscan()
-
-
-
-
-func shoot_projectile():
-	var p = projectile.instantiate()
-	p.position = marker_3d.global_position
-	p.rotation = marker_3d.global_rotation
-	add_sibling(p)
-	
-	
-func spawn(pos: Vector3, normal: Vector3):
-	var p = J.instantiate()
-	var col = ray_cast_3d.get_collider()
-	col.add_sibling(p)
-	p.position = pos
-	if normal != Vector3.UP:
-		# look in the direction of the normal
-		p.look_at(pos + normal, Vector3.UP)
-		# then look "up" from there so the decal projects "down"
-		p.transform = p.transform.rotated_local(Vector3.RIGHT, PI/2.0)
-	p.rotate(normal, randf_range(0, 2*PI))
-
-func hitscan():
-	if ray_cast_3d.is_colliding():
-		spawn(ray_cast_3d.get_collision_point(), ray_cast_3d.get_collision_normal())
+	if event.is_action_pressed("2"):
+		prev_hand_scene = in_hand_scene
+		in_hand_scene = pistol
+		in_hand.queue_free()
+		in_hand = pistol.instantiate()
+		self.canvas_layer.add_child(in_hand)
 		
-		if ray_cast_3d.get_collider().has_method("damage"):
-			ray_cast_3d.get_collider().damage(hitscn_dmg)
+	if event.is_action_pressed("3"):
+		prev_hand_scene = in_hand_scene
+		in_hand_scene = RPG
+		in_hand.queue_free()
+		in_hand = RPG.instantiate()
+		self.canvas_layer.add_child(in_hand)
+		
+
+
+
 
 
 
@@ -92,3 +115,8 @@ func get_explode(dmg,from_pos):
 	direction *= -speed
 	
 	velocity += direction
+	
+func swap(arr):
+	var j = arr[0]
+	arr[0] = arr[1]
+	arr[1] = j

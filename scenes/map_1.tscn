@@ -60,7 +60,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.149364, 1.5588121, 12.997
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -19, 2.8857474, 12.882055)
 
 [node name="wall2" parent="." instance=ExtResource("5_0dnla")]
-transform = Transform3D(1.4142135, -0.70710677, 0, 1.4142135, 0.70710677, 0, 0, 0, 1, -12.518368, 3.4536085, -4.486688)
+transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, -12.518368, 3.4536085, -4.486688)
 
 [node name="wall3" parent="." instance=ExtResource("5_0dnla")]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 7.6128044, 7.6776247, -5.8444614)
+
+[node name="wall4" parent="." instance=ExtResource("5_0dnla")]
+transform = Transform3D(0.35355338, -0.35355338, 0, 0.35355338, 0.35355338, 0, 0, 0, 0.5, -1.1638947, 2.8857474, -13.181925)

@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=3 uid="uid://dfvk5kghbnrnb"]
+
+[ext_resource type="Texture2D" uid="uid://b2byw5tk55bsm" path="res://art/knife/idle.png" id="1_7a2es"]
+[ext_resource type="Script" uid="uid://bboapbfwisgom" path="res://scripts/knife.gd" id="1_kol1t"]
+[ext_resource type="Texture2D" uid="uid://h5mcd0f765pa" path="res://art/knife/shoot/knife3.png" id="2_kol1t"]
+[ext_resource type="Texture2D" uid="uid://c1v1pu1622k0s" path="res://art/knife/shoot/knife2.png" id="3_imij8"]
+[ext_resource type="Texture2D" uid="uid://b52i01jevgbmp" path="res://art/knife/shoot/knife1.png" id="4_1l6bf"]
+[ext_resource type="Texture2D" uid="uid://bewylvexemvjt" path="res://art/knife/shoot/knife0.png" id="5_fdp04"]
+[ext_resource type="Texture2D" uid="uid://dv7b8uvcw7jvf" path="res://art/knife/back.png" id="6_rw40l"]
+[ext_resource type="Texture2D" uid="uid://bqkamyjrl6idu" path="res://art/knife/shoot/knife4.png" id="7_bsx7w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rwrp1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7a2es")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kol1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_imij8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1l6bf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fdp04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_7a2es")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rw40l")
+}],
+"loop": false,
+"name": &"reload",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_fdp04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1l6bf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_imij8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kol1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bsx7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kol1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_imij8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1l6bf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fdp04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_7a2es")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rw40l")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 55.0
+}]
+
+[node name="Knife" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+script = ExtResource("1_kol1t")
+shoot_time = 0.5
+
+[node name="gun" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 96.6)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_rwrp1")
+animation = &"shoot"
+autoplay = "idle"

@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://jcobrh6oadkh"]
+
+[ext_resource type="Texture2D" uid="uid://eu0dn4wgp16h" path="res://art/rpg/rpg.png" id="1_l404j"]
+[ext_resource type="Script" uid="uid://bp3aamflw2067" path="res://scripts/rpg.gd" id="1_qith2"]
+[ext_resource type="Texture2D" uid="uid://e0864ohsnb4f" path="res://art/rpg/rpg_reload.png" id="2_qith2"]
+[ext_resource type="Texture2D" uid="uid://b8jenfb4tmowf" path="res://art/rpg/rpg_shoot/rpg0.png" id="3_aj7hu"]
+[ext_resource type="Texture2D" uid="uid://cdaae045ktr2i" path="res://art/rpg/rpg_shoot/rpg1.png" id="4_m82wu"]
+[ext_resource type="Texture2D" uid="uid://r03k1345hxro" path="res://art/rpg/rpg_shoot/rpg2.png" id="5_aatpl"]
+[ext_resource type="Texture2D" uid="uid://8r1ucj3j1cvi" path="res://art/rpg/rpg_shoot/rpg3.png" id="6_8cobv"]
+[ext_resource type="Texture2D" uid="uid://dspl18pud4c5g" path="res://art/rpg/rpg_shoot/rpg4.png" id="7_fpbek"]
+[ext_resource type="Texture2D" uid="uid://d07nkg7x0am1j" path="res://art/rpg/rpg_shoot/rpg5.png" id="8_5vtbm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fewuk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l404j")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qith2")
+}],
+"loop": true,
+"name": &"reload",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_aj7hu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_m82wu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_aatpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8cobv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fpbek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5vtbm")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 35.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qith2"]
+
+[node name="RPG" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+script = ExtResource("1_qith2")
+
+[node name="gun" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 207)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_fewuk")
+animation = &"shoot"
+autoplay = "idle"
+frame = 5
+frame_progress = 1.0
+
+[node name="TextEdit" type="TextEdit" parent="."]
+z_index = 1
+layout_mode = 1
+offset_left = 124.0
+offset_top = -41.75
+offset_right = 437.0
+offset_bottom = 41.75
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qith2")
+placeholder_text = "8/40"

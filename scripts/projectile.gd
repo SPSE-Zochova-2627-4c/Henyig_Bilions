@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-
+const EXPLOSION = preload("uid://bv1em2hhlqbga")
 const DECAL_BLACK = preload("uid://cmj0ryqpeodd4")
 @export var speed: float = 2.0
 @onready var expl_area: Area3D = $ExplArea
@@ -75,10 +75,14 @@ func _on_area_3d_body_entered(_body: Node3D) -> void:
 		repeat = true
 		
 		var p = DECAL_BLACK.instantiate()
+		var j = EXPLOSION.instantiate()
 		p.position = global_position
+		j.position = global_position
 
 		
 		p.rotation.y = global_rotation.y
+		j.rotation.y = global_rotation.y
 		#print(global_rotation,p.rotation)
 		add_sibling(p)
+		add_sibling(j)
 	

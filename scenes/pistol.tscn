@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://dureo6lwixg0"]
+
+[ext_resource type="Script" uid="uid://d3d3kx8j6f6bu" path="res://scripts/pistol.gd" id="1_igbvm"]
+[ext_resource type="Texture2D" uid="uid://cflwjyogr08aw" path="res://art/pistol/pistol.png" id="2_buff3"]
+[ext_resource type="Texture2D" uid="uid://b5eadeuw3xuyk" path="res://art/pistol/pistol_reload/reload3.png" id="3_1e3ry"]
+[ext_resource type="Texture2D" uid="uid://t1gwn7jl3lmu" path="res://art/pistol/pistol_reload/reload1.png" id="3_4hq71"]
+[ext_resource type="Texture2D" uid="uid://lhswl7lplsjc" path="res://art/pistol/pistol_reload/reload2.png" id="4_88qyl"]
+[ext_resource type="Texture2D" uid="uid://bsdfucs2eer60" path="res://art/pistol/pistol_shoot/pistol0.png" id="6_wvp02"]
+[ext_resource type="Texture2D" uid="uid://ctdrkwx150ohl" path="res://art/pistol/pistol_shoot/pistol1.png" id="7_eun5i"]
+[ext_resource type="Texture2D" uid="uid://chackovh02ka0" path="res://art/pistol/pistol_shoot/pistol2.png" id="8_b4lmj"]
+[ext_resource type="Texture2D" uid="uid://d38hc3nycih55" path="res://art/pistol/pistol_shoot/pistol3.png" id="9_rfdf8"]
+[ext_resource type="Texture2D" uid="uid://dsskbsngk5jbq" path="res://art/pistol/pistol_shoot/pistol4.png" id="10_jbybm"]
+[ext_resource type="Texture2D" uid="uid://ctrlfpwtvg54" path="res://art/pistol/pistol_shoot/pistol5.png" id="11_7nha5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1r6mc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_buff3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4hq71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_88qyl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1e3ry")
+}],
+"loop": true,
+"name": &"reload",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_wvp02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_eun5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_b4lmj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rfdf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jbybm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7nha5")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 35.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wvp02"]
+
+[node name="Pistol" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_igbvm")
+
+[node name="gun" type="AnimatedSprite2D" parent="."]
+position = Vector2(943.5, 453.6)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_1r6mc")
+animation = &"shoot"
+autoplay = "idle"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 124.0
+offset_top = -41.75
+offset_right = 437.0
+offset_bottom = 41.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wvp02")
+placeholder_text = "8/40"
