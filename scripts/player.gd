@@ -13,12 +13,14 @@ const KNIFE = preload("uid://dfvk5kghbnrnb")
 @export var explosion_dramaticism: float = 0.1
 @onready var ray_cast_3d: RayCast3D = $Camera3D/Marker3D/RayCast3D
 
-const SPEED = 8.0
-const JUMP_VELOCITY = 4.5
+var SPEED = 6.5
+const JUMP_VELOCITY = 3.5
+var JUMP_SPEED = 6.0
 var ray_range = 2000
 var mouse_sensitivity = 0.002
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var hp = 500
+var on_floor = true
 
 
 
@@ -30,20 +32,33 @@ var prev_hand_scene = hand
 @export var rpg_ammo = 24
 var pistol_clip: int = 0
 var rpg_clip: int = 0
+var bhop_time = 0
+
 func _ready():
 	add_child(in_hand)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
-	
+
+
 
 func _physics_process(delta):
-	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	# Handle jump.
+	if on_floor != is_on_floor():
+		if is_on_floor() == false:
+			bhop_time = 5
+		on_floor = is_on_floor()
+		
+		
+		
+	if bhop_time > 0:
+		bhop_time -= delta
+
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		if bhop_time > 0:
+			velocity.y = JUMP_VELOCITY*20
+		else:
+			velocity.y = JUMP_VELOCITY
 
 
 
@@ -52,12 +67,15 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
+	if direction and is_on_floor():
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	elif is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, 0.5)
 		velocity.z = move_toward(velocity.z, 0, 0.5)
+	else:
+		velocity.x = move_toward(velocity.x, direction.x*JUMP_SPEED, delta*10)
+		velocity.z = move_toward(velocity.z, direction.z*JUMP_SPEED, delta*10)
 	move_and_slide()
 
 
