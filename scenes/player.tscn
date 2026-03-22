@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cm4xai5es7y8c"]
+[gd_scene format=3 uid="uid://cm4xai5es7y8c"]
 
 [ext_resource type="Script" uid="uid://c5x8sm0ntjriv" path="res://scripts/player.gd" id="1_o4maj"]
 [ext_resource type="Script" uid="uid://caik0bobwtkwm" path="res://scripts/PlayerCamera3D.gd" id="2_js73g"]
 [ext_resource type="Texture2D" uid="uid://cwld5lao4a1ym" path="res://art/texture1.png" id="3_08q75"]
+[ext_resource type="AudioStream" uid="uid://corjltxxtv4ge" path="res://sound/ding.mp3" id="4_dqkch"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_65nyi"]
 height = 2.2
@@ -13,23 +14,23 @@ height = 2.2
 [sub_resource type="BoxShape3D" id="BoxShape3D_qhqgy"]
 size = Vector3(0.8, 0.4, 1)
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" unique_id=1642852796]
 script = ExtResource("1_o4maj")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=417179454]
 shape = SubResource("CapsuleShape3D_65nyi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1974430873]
 mesh = SubResource("CapsuleMesh_4wel0")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=42858401]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.766312, 0)
 fov = 90.0
 script = ExtResource("2_js73g")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D" unique_id=1368093343]
 
-[node name="crosshair" type="TextureRect" parent="Camera3D/CanvasLayer"]
+[node name="crosshair" type="TextureRect" parent="Camera3D/CanvasLayer" unique_id=1784313874]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -47,14 +48,17 @@ texture = ExtResource("3_08q75")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Marker3D" type="Marker3D" parent="Camera3D"]
+[node name="Marker3D" type="Marker3D" parent="Camera3D" unique_id=1591165490]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.53362817)
 
-[node name="RayCast3D" type="RayCast3D" parent="Camera3D/Marker3D"]
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D/Marker3D" unique_id=341275582]
 transform = Transform3D(1, 0, 0, 0, -8.742278e-07, -1, 0, 20, -4.371139e-08, 0, 0, 0)
 
-[node name="Area3D" type="Area3D" parent="Camera3D"]
+[node name="Area3D" type="Area3D" parent="Camera3D" unique_id=199899427]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Area3D" unique_id=1702058212]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8504094)
 shape = SubResource("BoxShape3D_qhqgy")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1719662676]
+stream = ExtResource("4_dqkch")

@@ -8,6 +8,7 @@ const KNIFE = preload("uid://dfvk5kghbnrnb")
 @onready var canvas_layer: CanvasLayer = $Camera3D/CanvasLayer
 @export var hitscn_dmg: int = 40
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var marker_3d: Marker3D = $Camera3D/Marker3D
 @export var explosion_dramaticism: float = 0.1
@@ -45,8 +46,8 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	if on_floor != is_on_floor():
-		if is_on_floor() == false:
-			bhop_time = 5
+		if not on_floor:
+			bhop_time = 0.1
 		on_floor = is_on_floor()
 		
 		
@@ -56,7 +57,8 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		if bhop_time > 0:
-			velocity.y = JUMP_VELOCITY*20
+			audio_stream_player.play()
+			velocity.y = JUMP_VELOCITY*1.5
 		else:
 			velocity.y = JUMP_VELOCITY
 
