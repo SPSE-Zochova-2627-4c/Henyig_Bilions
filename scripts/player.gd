@@ -33,7 +33,8 @@ var prev_hand_scene = hand
 @export var rpg_ammo = 24
 var pistol_clip: int = 0
 var rpg_clip: int = 0
-var bhop_time = 0
+var bhop = 0
+@export var bhop_time = 0.2
 
 func _ready():
 	add_child(in_hand)
@@ -47,16 +48,16 @@ func _physics_process(delta):
 
 	if on_floor != is_on_floor():
 		if not on_floor:
-			bhop_time = 0.1
+			bhop = 0.1
 		on_floor = is_on_floor()
 		
 		
 		
-	if bhop_time > 0:
-		bhop_time -= delta
+	if bhop > 0:
+		bhop -= delta
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		if bhop_time > 0:
+		if bhop > 0:
 			audio_stream_player.play()
 			velocity.y = JUMP_VELOCITY*1.5
 		else:
