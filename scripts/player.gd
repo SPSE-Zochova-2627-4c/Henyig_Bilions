@@ -16,7 +16,7 @@ const KNIFE = preload("uid://dfvk5kghbnrnb")
 
 var SPEED = 6.5
 const JUMP_VELOCITY = 3.5
-var JUMP_SPEED = 6.0
+@export var JUMP_SPEED = 6.5
 var ray_range = 2000
 var mouse_sensitivity = 0.002
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -76,7 +76,7 @@ func _physics_process(delta):
 	elif is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, 0.5)
 		velocity.z = move_toward(velocity.z, 0, 0.5)
-	else:
+	elif direction:
 		velocity.x = move_toward(velocity.x, direction.x*JUMP_SPEED, delta*10)
 		velocity.z = move_toward(velocity.z, direction.z*JUMP_SPEED, delta*10)
 	move_and_slide()
