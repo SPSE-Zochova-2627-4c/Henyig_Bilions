@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://yk1pgw2igdti"]
+[gd_scene format=3 uid="uid://yk1pgw2igdti"]
 
 [ext_resource type="Texture2D" uid="uid://bekb8n3m2yol3" path="res://art/T_smoke_b7.png" id="1_6q3j8"]
 
@@ -48,9 +48,9 @@ alpha_curve = SubResource("CurveTexture_ofi6e")
 
 [sub_resource type="QuadMesh" id="QuadMesh_kmcpq"]
 
-[node name="cheap_smoke" type="Node3D"]
+[node name="cheap_smoke" type="Node3D" unique_id=1587184961]
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1498721763]
 material_override = SubResource("StandardMaterial3D_68wuk")
 amount = 30
 speed_scale = 1.3
