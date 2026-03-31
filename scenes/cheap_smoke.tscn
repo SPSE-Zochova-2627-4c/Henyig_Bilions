@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://yk1pgw2igdti"]
 
 [ext_resource type="Texture2D" uid="uid://bekb8n3m2yol3" path="res://art/T_smoke_b7.png" id="1_6q3j8"]
+[ext_resource type="Curve" uid="uid://b3ak7ytk1vet2" path="res://bs/alpha_curve.tres" id="2_68wuk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68wuk"]
 transparency = 1
@@ -13,13 +14,9 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 proximity_fade_distance = 0.5
 
-[sub_resource type="Curve" id="Curve_hi17g"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.09608541, 1), 0.0, 0.0, 0, 0, Vector2(0.6227758, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
 [sub_resource type="CurveTexture" id="CurveTexture_ofi6e"]
 texture_mode = 1
-curve = SubResource("Curve_hi17g")
+curve = ExtResource("2_68wuk")
 
 [sub_resource type="Curve" id="Curve_aqgob"]
 _limits = [0.0, 1.0, 0.0, 3.0]
