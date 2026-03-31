@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bwoenohlanbk8"]
+
+[ext_resource type="Texture2D" uid="uid://bekb8n3m2yol3" path="res://art/T_smoke_b7.png" id="1_07pfa"]
+
+[resource]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.95233446, 0, 0.114763, 1)
+albedo_texture = ExtResource("1_07pfa")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+grow_amount = 1.082
+proximity_fade_distance = 4096.0

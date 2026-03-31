@@ -77,8 +77,8 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, 0.5)
 		velocity.z = move_toward(velocity.z, 0, 0.5)
 	elif direction:
-		velocity.x = move_toward(velocity.x, direction.x*JUMP_SPEED, delta*10)
-		velocity.z = move_toward(velocity.z, direction.z*JUMP_SPEED, delta*10)
+		velocity.x = move_toward(velocity.x, direction.x*JUMP_SPEED, delta*20)
+		velocity.z = move_toward(velocity.z, direction.z*JUMP_SPEED, delta*20)
 	move_and_slide()
 
 
