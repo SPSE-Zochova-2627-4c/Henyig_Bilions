@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://bekb8n3m2yol3" path="res://art/T_smoke_b7.png" id="1_s6d3e"]
 [ext_resource type="Curve" uid="uid://b3ak7ytk1vet2" path="res://bs/alpha_curve.tres" id="2_jx0uu"]
-[ext_resource type="PackedScene" uid="uid://dlus8k5iwdxf4" path="res://scenes/wall.tscn" id="3_llcfr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jx0uu"]
 transparency = 1
@@ -66,6 +65,10 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.39999998
 scale_max = 0.59999996
 scale_curve = SubResource("CurveTexture_frkm1")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+collision_use_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_037j0"]
 orientation = 1
@@ -73,23 +76,17 @@ orientation = 1
 [node name="blood_stream" type="Node3D" unique_id=1366203507]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1576381172]
+transform = Transform3D(0.96132904, 0, 0.27540246, 0, 1, 0, -0.27540246, 0, 0.96132904, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_jx0uu")
-amount = 80
-sub_emitter = NodePath("../GPUParticles3D2")
+amount = 100
+sub_emitter = NodePath("GPUParticles3D2")
 lifetime = 5.0
 speed_scale = 1.3
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_llcfr")
 draw_pass_1 = SubResource("QuadMesh_frkm1")
 
-[node name="wall" parent="." unique_id=1004300042 instance=ExtResource("3_llcfr")]
-transform = Transform3D(-4.371139e-08, -0.99999994, 0, 1, -4.3711385e-08, 0, 0, 0, 1, 0, -2.1339483, -2.0281677)
-
-[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." unique_id=13111925]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0009765625, -2.0579555, -2.0269775)
-size = Vector3(9.964844, 1.1567993, 9.974365)
-
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="." unique_id=1984675754]
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="GPUParticles3D" unique_id=1984675754]
 material_override = SubResource("StandardMaterial3D_frkm1")
 cast_shadow = 0
 amount = 2000
