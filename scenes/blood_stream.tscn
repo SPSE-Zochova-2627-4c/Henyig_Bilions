@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c80pdwpxa1lr7"]
 
+[ext_resource type="Script" uid="uid://cgmvu12mcl4oo" path="res://scripts/blood_stream.gd" id="1_llcfr"]
 [ext_resource type="Texture2D" uid="uid://bekb8n3m2yol3" path="res://art/T_smoke_b7.png" id="1_s6d3e"]
 [ext_resource type="Curve" uid="uid://b3ak7ytk1vet2" path="res://bs/alpha_curve.tres" id="2_jx0uu"]
 
@@ -74,9 +75,9 @@ collision_use_scale = true
 orientation = 1
 
 [node name="blood_stream" type="Node3D" unique_id=1366203507]
+script = ExtResource("1_llcfr")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1576381172]
-transform = Transform3D(0.96132904, 0, 0.27540246, 0, 1, 0, -0.27540246, 0, 0.96132904, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_jx0uu")
 amount = 100
 sub_emitter = NodePath("GPUParticles3D2")
@@ -93,3 +94,8 @@ amount = 2000
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_xh5xq")
 draw_pass_1 = SubResource("QuadMesh_037j0")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=793082533]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Area3D" unique_id=967292303]
+polygon = PackedVector2Array(0, 0.25, 1, 0.4, 2, -0.5, 3, -2.5, 7, -15, 4.5, -15, 2, -2.5, 1.2, -0.5, 0, 0)
