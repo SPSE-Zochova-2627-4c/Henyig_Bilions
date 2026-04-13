@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmj0ryqpeodd4"]
+[gd_scene format=3 uid="uid://cmj0ryqpeodd4"]
 
 [ext_resource type="Script" uid="uid://ec6m0stvvfe0" path="res://scripts/decal_black.gd" id="1_50hyy"]
 [ext_resource type="Texture2D" uid="uid://d4kjt2ks6qn3q" path="res://art/texture2.png" id="1_n1q73"]
 
-[node name="decal_black" type="Node3D"]
+[node name="decal_black" type="Node3D" unique_id=1558340102]
 script = ExtResource("1_50hyy")
 
-[node name="Decal" type="Decal" parent="."]
+[node name="Decal" type="Decal" parent="." unique_id=282603563]
 size = Vector3(2, 1.5, 2)
 texture_albedo = ExtResource("1_n1q73")
 normal_fade = 0.7
@@ -15,7 +15,7 @@ lower_fade = 1.0
 distance_fade_begin = 0.0
 cull_mask = 1047680
 
-[node name="Decal2" type="Decal" parent="."]
+[node name="Decal2" type="Decal" parent="." unique_id=907723776]
 transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0)
 size = Vector3(2, 1.5, 2)
 texture_albedo = ExtResource("1_n1q73")
@@ -25,7 +25,7 @@ lower_fade = 1.0
 distance_fade_begin = 0.0
 cull_mask = 1047680
 
-[node name="Decal3" type="Decal" parent="."]
+[node name="Decal3" type="Decal" parent="." unique_id=174028443]
 transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 0, 0)
 size = Vector3(2, 1.5, 2)
 texture_albedo = ExtResource("1_n1q73")
@@ -35,7 +35,7 @@ lower_fade = 1.0
 distance_fade_begin = 0.0
 cull_mask = 1047680
 
-[node name="Decal4" type="Decal" parent="."]
+[node name="Decal4" type="Decal" parent="." unique_id=93914141]
 transform = Transform3D(1, 0, 0, 0, -0.7071067, -0.7071067, 0, 0.7071067, -0.7071067, 0, 0, 0)
 size = Vector3(2, 1.5, 2)
 texture_albedo = ExtResource("1_n1q73")
@@ -45,7 +45,7 @@ lower_fade = 1.0
 distance_fade_begin = 0.0
 cull_mask = 1047680
 
-[node name="Decal5" type="Decal" parent="."]
+[node name="Decal5" type="Decal" parent="." unique_id=1146242113]
 transform = Transform3D(1, 0, 0, 0, -0.9999998, 8.742276e-08, 0, -8.742276e-08, -0.9999998, 0, 0, 0)
 size = Vector3(2, 1.5, 2)
 texture_albedo = ExtResource("1_n1q73")
@@ -55,7 +55,7 @@ lower_fade = 1.0
 distance_fade_begin = 0.0
 cull_mask = 1047680
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=707831440]
 wait_time = 10.0
 one_shot = true
 autostart = true

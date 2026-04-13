@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c5x8sm0ntjriv" path="res://scripts/player.gd" id="1_o4maj"]
 [ext_resource type="Script" uid="uid://caik0bobwtkwm" path="res://scripts/PlayerCamera3D.gd" id="2_js73g"]
-[ext_resource type="PackedScene" uid="uid://c80pdwpxa1lr7" path="res://scenes/blood_stream.tscn" id="2_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://cwld5lao4a1ym" path="res://art/texture1.png" id="3_08q75"]
 [ext_resource type="AudioStream" uid="uid://corjltxxtv4ge" path="res://sound/ding.mp3" id="4_dqkch"]
 
@@ -23,9 +22,6 @@ shape = SubResource("CapsuleShape3D_65nyi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1974430873]
 mesh = SubResource("CapsuleMesh_4wel0")
-
-[node name="blood_stream" parent="CollisionShape3D" unique_id=1366203507 instance=ExtResource("2_qlg0r")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.380059, -0.36649477)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=42858401]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.766312, 0)

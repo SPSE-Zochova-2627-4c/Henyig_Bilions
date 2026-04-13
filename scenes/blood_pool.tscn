@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cdfyo2h4fx7tq"]
+
+[ext_resource type="Texture2D" uid="uid://d4kjt2ks6qn3q" path="res://art/texture2.png" id="1_w6dvo"]
+[ext_resource type="Texture2D" uid="uid://bekb8n3m2yol3" path="res://art/T_smoke_b7.png" id="2_mxwal"]
+
+[node name="blood_pool" type="Node3D" unique_id=1911380061]
+
+[node name="Decal" type="Decal" parent="." unique_id=471033486]
+size = Vector3(2, 1.5, 2)
+texture_albedo = ExtResource("1_w6dvo")
+texture_normal = ExtResource("2_mxwal")
+normal_fade = 0.7
+upper_fade = 1.0
+lower_fade = 1.0
+distance_fade_begin = 0.0
+cull_mask = 1047680
+
+[node name="Decal2" type="Decal" parent="." unique_id=628546323]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0)
+size = Vector3(2, 1.5, 2)
+texture_albedo = ExtResource("1_w6dvo")
+texture_normal = ExtResource("2_mxwal")
+normal_fade = 0.7
+upper_fade = 1.0
+lower_fade = 1.0
+distance_fade_begin = 0.0
+cull_mask = 1047680
+
+[node name="Decal3" type="Decal" parent="." unique_id=1560653015]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+size = Vector3(2, 1.5, 2)
+texture_albedo = ExtResource("1_w6dvo")
+texture_normal = ExtResource("2_mxwal")
+normal_fade = 0.7
+upper_fade = 1.0
+lower_fade = 1.0
+distance_fade_begin = 0.0
+cull_mask = 1047680
+
+[node name="Decal4" type="Decal" parent="." unique_id=1879128730]
+transform = Transform3D(1, 0, 0, 0, -0.70710677, -0.70710677, 0, 0.70710677, -0.70710677, 0, 0, 0)
+size = Vector3(2, 1.5, 2)
+texture_albedo = ExtResource("1_w6dvo")
+texture_normal = ExtResource("2_mxwal")
+normal_fade = 0.7
+upper_fade = 1.0
+lower_fade = 1.0
+distance_fade_begin = 0.0
+cull_mask = 1047680
+
+[node name="Decal5" type="Decal" parent="." unique_id=1178251674]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0)
+size = Vector3(2, 1.5, 2)
+texture_albedo = ExtResource("1_w6dvo")
+texture_normal = ExtResource("2_mxwal")
+normal_fade = 0.7
+upper_fade = 1.0
+lower_fade = 1.0
+distance_fade_begin = 0.0
+cull_mask = 1047680

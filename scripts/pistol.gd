@@ -1,6 +1,8 @@
 extends Control
 
+const BLOOD_STREAM = preload("uid://c80pdwpxa1lr7")
 const J = preload("uid://uuo0ujb2u4yh")
+
 const max_clip: int = 8
 
 
@@ -88,9 +90,22 @@ func spawn(pos: Vector3, normal: Vector3):
 		p.transform = p.transform.rotated_local(Vector3.RIGHT, PI/2.0)
 	p.rotate(normal, randf_range(0, 2*PI))
 
+
+func bspawn(pos: Vector3, normal: Vector3,dad):
+	var p = BLOOD_STREAM.instantiate()
+	dad.add_child(p)
+	p.global_position = pos
+	#if normal != Vector3.UP:
+		## look in the direction of the normal1
+		#p.look_at(-1*(pos + normal), Vector3.UP)
+		## then look "up" from there so the decal projects "down"
+		#p.transform = p.transform.rotated_local(Vector3.RIGHT, PI/2.0)
+	#p.rotate(Vector3(0,1,0), randf_range(0, 2*PI))
+
 func left_click():
 	if ray_cast_3d.is_colliding():
-		spawn(ray_cast_3d.get_collision_point(), ray_cast_3d.get_collision_normal())
-		
+		bspawn(ray_cast_3d.get_collision_point(), ray_cast_3d.get_collision_normal(),ray_cast_3d.get_collider())
 		if ray_cast_3d.get_collider().has_method("damage"):
+			
 			ray_cast_3d.get_collider().damage(hitscn_dmg)
+		

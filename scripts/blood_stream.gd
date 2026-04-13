@@ -1,35 +1,55 @@
 extends Node3D
 @onready var area_3d: Area3D = $Area3D
+
+@onready var casts = [
+	$RayCast3D2,
+	$RayCast3D3
+]
+
+
+
+
+const J = preload("uid://cdfyo2h4fx7tq")
+
+@onready var pool_plant_location = self.global_position
 var tm = 0
-const J = preload("uid://uuo0ujb2u4yh")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	self.global_rotation.x = 0
+	self.global_rotation.z = 0
 	tm += delta
 	if tm >= 0.5:
 		tm = 0
-		if area_3d.get_overlapping_bodies():
-			var rid := area_3d.get_rid()
-			var state := PhysicsServer3D.body_get_direct_state(rid)
-			spawn(state.get_contact_collider_position(1),Vector3.ZERO)
+		for ray in casts:
+			if ray.is_colliding() and not_in_radius(pool_plant_location,self.global_position,0.4):
+				spawn(ray.get_collision_point(), ray.get_collision_normal(),ray)
+				break
 
 
+func not_in_radius(old, new, radius):
+	var dx = new.x - old.x
+	var dy = new.y - old.y
+	var dz = new.z - old.z
+	pool_plant_location = self.global_position
+	return (dx*dx + dy*dy + dz*dz) > radius * radius
 
 
-func spawn(pos: Vector3, normal: Vector3):
+func spawn(pos: Vector3, normal: Vector3,r):
 	var p = J.instantiate()
-	area_3d.add_sibling(p)
-	p.position = pos
+	var col = r.get_collider()
+	col.add_sibling(p)
+	p.global_position = pos
 	if normal != Vector3.UP:
 		# look in the direction of the normal1
-		p.look_at(pos + normal, Vector3.UP)
+		p.look_at(-1*(pos + normal), Vector3.UP)
 		# then look "up" from there so the decal projects "down"
 		p.transform = p.transform.rotated_local(Vector3.RIGHT, PI/2.0)
 	p.rotate(normal, randf_range(0, 2*PI))
