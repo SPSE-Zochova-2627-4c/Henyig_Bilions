@@ -2,6 +2,7 @@ extends Node3D
 @onready var area_3d: Area3D = $Area3D
 
 @onready var casts = [
+	$RayCast3D,
 	$RayCast3D2,
 	$RayCast3D3
 ]
@@ -14,14 +15,11 @@ const J = preload("uid://cdfyo2h4fx7tq")
 @onready var pool_plant_location = self.global_position
 var tm = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
 
 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta: float) -> void:
 	self.global_rotation.x = 0
 	self.global_rotation.z = 0
