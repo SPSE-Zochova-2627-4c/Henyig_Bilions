@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://yk1pgw2igdti"]
 
-[ext_resource type="Texture2D" uid="uid://bekb8n3m2yol3" path="res://art/T_smoke_b7.png" id="1_6q3j8"]
+[ext_resource type="Texture2D" uid="uid://bekb8n3m2yol3" path="res://art/fx/T_smoke_b7.png" id="1_6q3j8"]
 [ext_resource type="Curve" uid="uid://b3ak7ytk1vet2" path="res://bs/alpha_curve.tres" id="2_68wuk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68wuk"]

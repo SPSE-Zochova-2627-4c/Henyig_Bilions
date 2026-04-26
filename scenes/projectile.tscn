@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cu2gewcpqmm25"]
+[gd_scene format=3 uid="uid://cu2gewcpqmm25"]
 
 [ext_resource type="Script" uid="uid://drfaoemqiykoo" path="res://scripts/projectile.gd" id="1_c8fcr"]
 [ext_resource type="Texture2D" uid="uid://cwld5lao4a1ym" path="res://art/texture1.png" id="2_q3m7n"]
@@ -16,33 +16,33 @@ albedo_texture = ExtResource("2_q3m7n")
 
 [sub_resource type="SphereMesh" id="SphereMesh_6q2a6"]
 
-[node name="Projectile" type="RigidBody3D"]
+[node name="Projectile" type="RigidBody3D" unique_id=617839881]
 script = ExtResource("1_c8fcr")
 speed = 12.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1277485546]
 transform = Transform3D(0.2, 0, 0, 0, -8.742278e-09, -0.2, 0, 0.2, -8.742278e-09, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_vswed")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=180679297]
 mesh = SubResource("CapsuleMesh_kjs8p")
 
-[node name="HitArea" type="Area3D" parent="."]
+[node name="HitArea" type="Area3D" parent="." unique_id=1110585981]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea" unique_id=1697386286]
 transform = Transform3D(0.25, 0, 0, 0, -1.0927847e-08, -0.25, 0, 0.25, -1.0927847e-08, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_6aapk")
 
-[node name="ExplArea" type="Area3D" parent="."]
+[node name="ExplArea" type="Area3D" parent="." unique_id=1742280724]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplArea" unique_id=432169873]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 visible = false
 shape = SubResource("SphereShape3D_6aapk")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ExplArea/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ExplArea/CollisionShape3D" unique_id=1366974412]
 material_override = SubResource("StandardMaterial3D_softn")
 mesh = SubResource("SphereMesh_6q2a6")
 

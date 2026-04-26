@@ -3,9 +3,10 @@ const projectile = preload("uid://cu2gewcpqmm25")
 const J = preload("uid://uuo0ujb2u4yh")
 @onready var player: CharacterBody3D = $"../../.."
 @onready var ray_cast_3d: RayCast3D = $"../../Marker3D/RayCast3D"
-@onready var marker_3d: Marker3D = $"../../Marker3D"
+@onready var rocket_spawn: Node3D = $"../../Marker3D/RocketSpawn"
 @onready var text_edit: TextEdit = $TextEdit
 @onready var gun: AnimatedSprite2D = $gun
+
 
 
 @export var shoot_time: float = 0.75
@@ -17,8 +18,6 @@ var cur_shoot_time = 0
 
 
 
-func _ready() -> void:
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,8 +59,8 @@ func _process(delta: float) -> void:
 
 func shoot_projectile():
 	var p = projectile.instantiate()
-	p.position = marker_3d.global_position
-	p.rotation = marker_3d.global_rotation
+	p.position = rocket_spawn.global_position
+	p.rotation = rocket_spawn.global_rotation
 	add_sibling(p)
 	
 	

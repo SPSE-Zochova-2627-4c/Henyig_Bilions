@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cdfyo2h4fx7tq"]
 
-[ext_resource type="Texture2D" uid="uid://d4kjt2ks6qn3q" path="res://art/texture2.png" id="1_w6dvo"]
-[ext_resource type="Texture2D" uid="uid://bekb8n3m2yol3" path="res://art/T_smoke_b7.png" id="2_mxwal"]
+[ext_resource type="Texture2D" uid="uid://d4kjt2ks6qn3q" path="res://art/fx/texture2.png" id="1_w6dvo"]
+[ext_resource type="Texture2D" uid="uid://bekb8n3m2yol3" path="res://art/fx/T_smoke_b7.png" id="2_mxwal"]
 
 [node name="blood_pool" type="Node3D" unique_id=1911380061]
 

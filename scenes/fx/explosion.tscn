@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bv1em2hhlqbga"]
+[gd_scene format=3 uid="uid://bv1em2hhlqbga"]
 
-[ext_resource type="Texture2D" uid="uid://75ohp4r0rlgv" path="res://art/smokesprite.png" id="1_17npe"]
-[ext_resource type="Script" uid="uid://ccg1r8bijegw0" path="res://scripts/explosion.gd" id="1_nfeox"]
+[ext_resource type="Texture2D" uid="uid://75ohp4r0rlgv" path="res://art/fx/smokesprite.png" id="1_17npe"]
+[ext_resource type="Script" uid="uid://ccg1r8bijegw0" path="res://scripts/fx/explosion.gd" id="1_nfeox"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cuiq1"]
 transparency = 1

@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://bwoenohlanbk8"]
 
-[ext_resource type="Texture2D" uid="uid://bekb8n3m2yol3" path="res://art/T_smoke_b7.png" id="1_07pfa"]
+[ext_resource type="Texture2D" uid="uid://bekb8n3m2yol3" path="res://art/fx/T_smoke_b7.png" id="1_07pfa"]
 
 [resource]
 transparency = 1

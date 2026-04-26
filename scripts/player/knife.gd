@@ -39,4 +39,4 @@ func cut():
 	#if area_3d.has_overlapping_bodies():
 		for body in area_3d.get_overlapping_bodies():
 			if body.has_method("damage"):
-				body.damage(dmg)
+				body.damage(dmg,0,player.global_position,false)

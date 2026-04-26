@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cs7jpjbh4e1gh"]
+
+[ext_resource type="Script" uid="uid://bo34frlqdtto6" path="res://scripts/enemies/walker.gd" id="1_gl10n"]
+[ext_resource type="Texture2D" uid="uid://cwld5lao4a1ym" path="res://art/texture1.png" id="2_rdvt3"]
+[ext_resource type="PackedScene" uid="uid://ka66m5d4whxi" path="res://scenes/enemies/rpg_spawn_point.tscn" id="3_67ber"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a0lpg"]
+height = 2.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgxja"]
+albedo_texture = ExtResource("2_rdvt3")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_irn3l"]
+height = 2.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_2jm2j"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="Walker" type="CharacterBody3D" unique_id=414510723]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_gl10n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2096307105]
+shape = SubResource("CapsuleShape3D_a0lpg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1471152577]
+material_override = SubResource("StandardMaterial3D_bgxja")
+mesh = SubResource("CapsuleMesh_irn3l")
+
+[node name="blood_point" type="Node3D" parent="." unique_id=688787255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48281407, 0.286726, 0)
+
+[node name="blood_point2" type="Node3D" parent="." unique_id=1881673552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49650958, 0.286726, 0)
+
+[node name="blood_point3" type="Node3D" parent="." unique_id=1042393661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.573, 0.50981754)
+
+[node name="blood_point4" type="Node3D" parent="." unique_id=1119261028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5054822, -0.4970399)
+
+[node name="Timer" type="Timer" parent="." unique_id=1942220973]
+wait_time = 0.1
+autostart = true
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=116302317]
+avoidance_enabled = true
+height = 2.2
+radius = 0.8
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=265364486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0416346, -0.32926655)
+mesh = SubResource("BoxMesh_2jm2j")
+
+[node name="RPGSpawnPoint" parent="." unique_id=31049790 instance=ExtResource("3_67ber")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -1)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

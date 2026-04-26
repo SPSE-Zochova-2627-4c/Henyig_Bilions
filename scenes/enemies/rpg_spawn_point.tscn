@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ka66m5d4whxi"]
+
+[ext_resource type="Script" uid="uid://6w3mp4v50ovq" path="res://scripts/enemies/rpg_spawn_point.gd" id="1_o7iue"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_o7iue"]
+radius = 0.1
+height = 0.2
+
+[node name="RPGSpawnPoint" type="Node3D" unique_id=31049790]
+script = ExtResource("1_o7iue")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1658768223]
+mesh = SubResource("SphereMesh_o7iue")

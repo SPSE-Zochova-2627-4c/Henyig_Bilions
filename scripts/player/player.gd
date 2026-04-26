@@ -121,18 +121,15 @@ func _input(event):
 		in_hand.queue_free()
 		in_hand = RPG.instantiate()
 		self.canvas_layer.add_child(in_hand)
-		
 
 
 
 
 
-
-func get_explode(dmg,from_pos):
+func damage(dmg,push_force,from_pos,_blood_point):
 	hp -= dmg
-
 	var direction = self.global_position.direction_to(from_pos)
-	var speed = explosion_dramaticism * dmg
+	var speed = explosion_dramaticism * push_force
 	direction *= -speed
 	
 	velocity += direction

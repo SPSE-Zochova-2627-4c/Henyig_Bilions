@@ -27,13 +27,13 @@ func _process(delta: float) -> void:
 	collision_shape_3d.force_update_transform()
 	
 	for body in expl_area.get_overlapping_bodies():
-		if body.has_method("get_explode") and body not in applied:
+		if body.has_method("damage") and body not in applied:
 			applied.append(body)
 			var space_state = get_world_3d().direct_space_state
 			var query = PhysicsRayQueryParameters3D.create(self.global_position, body.global_position)
 			var result = space_state.intersect_ray(query)
 			if result.collider == body:
-				body.get_explode(int(round(max_expl_dmg)),self.global_position)
+				body.damage(int(round(max_expl_dmg)),max_expl_dmg,self.global_position,false)
 				
 	max_expl_dmg -= dmg_falloff_speed * delta
 	remaining_time -= delta

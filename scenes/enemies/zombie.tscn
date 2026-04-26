@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://ba0u6t6pv8lqo"]
+
+[ext_resource type="Script" uid="uid://cdu6vcvd4x0eb" path="res://scripts/enemies/zombie.gd" id="1_rdvt3"]
+[ext_resource type="Texture2D" uid="uid://cwld5lao4a1ym" path="res://art/texture1.png" id="2_a0lpg"]
+[ext_resource type="PackedScene" uid="uid://yobr5w5o1i46" path="res://scenes/enemies/enemy_mele.tscn" id="3_a0lpg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a0lpg"]
+height = 2.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgxja"]
+albedo_texture = ExtResource("2_a0lpg")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_irn3l"]
+height = 2.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_2jm2j"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="Zombie" type="CharacterBody3D" unique_id=414510723]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_rdvt3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2096307105]
+shape = SubResource("CapsuleShape3D_a0lpg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1471152577]
+material_override = SubResource("StandardMaterial3D_bgxja")
+mesh = SubResource("CapsuleMesh_irn3l")
+
+[node name="blood_point" type="Node3D" parent="." unique_id=688787255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48281407, 0.286726, 0)
+
+[node name="blood_point2" type="Node3D" parent="." unique_id=1881673552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49650958, 0.286726, 0)
+
+[node name="blood_point3" type="Node3D" parent="." unique_id=1042393661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.573, 0.50981754)
+
+[node name="blood_point4" type="Node3D" parent="." unique_id=1119261028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5054822, -0.4970399)
+
+[node name="Timer" type="Timer" parent="." unique_id=1942220973]
+wait_time = 0.1
+autostart = true
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=116302317]
+avoidance_enabled = true
+height = 2.2
+radius = 0.8
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=265364486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0416346, -0.32926655)
+mesh = SubResource("BoxMesh_2jm2j")
+
+[node name="EnemyMele" parent="." unique_id=1660640899 instance=ExtResource("3_a0lpg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28349942, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

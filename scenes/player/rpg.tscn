@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://jcobrh6oadkh"]
+[gd_scene format=3 uid="uid://jcobrh6oadkh"]
 
 [ext_resource type="Texture2D" uid="uid://eu0dn4wgp16h" path="res://art/rpg/rpg.png" id="1_l404j"]
-[ext_resource type="Script" uid="uid://bp3aamflw2067" path="res://scripts/rpg.gd" id="1_qith2"]
+[ext_resource type="Script" uid="uid://bp3aamflw2067" path="res://scripts/player/rpg.gd" id="1_qith2"]
 [ext_resource type="Texture2D" uid="uid://e0864ohsnb4f" path="res://art/rpg/rpg_reload.png" id="2_qith2"]
 [ext_resource type="Texture2D" uid="uid://b8jenfb4tmowf" path="res://art/rpg/rpg_shoot/rpg0.png" id="3_aj7hu"]
 [ext_resource type="Texture2D" uid="uid://cdaae045ktr2i" path="res://art/rpg/rpg_shoot/rpg1.png" id="4_m82wu"]

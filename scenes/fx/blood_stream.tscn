@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c80pdwpxa1lr7"]
 
-[ext_resource type="Script" uid="uid://cgmvu12mcl4oo" path="res://scripts/blood_stream.gd" id="1_llcfr"]
-[ext_resource type="Texture2D" uid="uid://bekb8n3m2yol3" path="res://art/T_smoke_b7.png" id="1_s6d3e"]
+[ext_resource type="Script" uid="uid://cgmvu12mcl4oo" path="res://scripts/fx/blood_stream.gd" id="1_llcfr"]
+[ext_resource type="Texture2D" uid="uid://bekb8n3m2yol3" path="res://art/fx/T_smoke_b7.png" id="1_s6d3e"]
 [ext_resource type="Curve" uid="uid://b3ak7ytk1vet2" path="res://bs/alpha_curve.tres" id="2_jx0uu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jx0uu"]

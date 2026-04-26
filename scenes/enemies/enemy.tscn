@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://c81bb4ay4vy1u"]
+
+[ext_resource type="Script" uid="uid://cdiddfomxgl1j" path="res://scripts/enemies/enemy.gd" id="1_8e3ao"]
+[ext_resource type="Texture2D" uid="uid://cwld5lao4a1ym" path="res://art/texture1.png" id="2_38ino"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_woeia"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1u70j"]
+albedo_texture = ExtResource("2_38ino")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gbrad"]
+
+[node name="enemy" type="RigidBody3D" unique_id=1158799351]
+collision_layer = 3
+collision_mask = 3
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_8e3ao")
+explosion_dramaticism = 0.11
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1643200292]
+shape = SubResource("CapsuleShape3D_woeia")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1916239961]
+material_override = SubResource("StandardMaterial3D_1u70j")
+mesh = SubResource("CapsuleMesh_gbrad")
+
+[node name="blood_point" type="Node3D" parent="." unique_id=1388077704]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48281407, 0.286726, 0)
+
+[node name="blood_point2" type="Node3D" parent="." unique_id=680778715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49650958, 0.286726, 0)
+
+[node name="blood_point3" type="Node3D" parent="." unique_id=611074383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.573, 0.50981754)
+
+[node name="blood_point4" type="Node3D" parent="." unique_id=308957980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5054822, -0.4970399)
+
+[node name="Timer" type="Timer" parent="." unique_id=1171905481]
+wait_time = 0.5
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=692970789]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
