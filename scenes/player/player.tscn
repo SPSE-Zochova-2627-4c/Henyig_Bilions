@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cm4xai5es7y8c"]
 
 [ext_resource type="Script" uid="uid://c5x8sm0ntjriv" path="res://scripts/player/player.gd" id="1_lvxji"]
+[ext_resource type="Script" uid="uid://di0aljms2mu7i" path="res://scripts/player/canvas_layer.gd" id="2_lvxji"]
 [ext_resource type="Texture2D" uid="uid://cwld5lao4a1ym" path="res://art/texture1.png" id="3_75vfm"]
 [ext_resource type="AudioStream" uid="uid://corjltxxtv4ge" path="res://sound/ding.mp3" id="4_0owmy"]
 
@@ -9,6 +10,12 @@ height = 2.2
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4wel0"]
 height = 2.2
+
+[sub_resource type="LabelSettings" id="LabelSettings_gmlin"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_lvxji"]
+font_size = 118
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qhqgy"]
 size = Vector3(0.8, 0.4, 1)
@@ -29,6 +36,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.766312, 0)
 fov = 90.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera3D" unique_id=1368093343]
+script = ExtResource("2_lvxji")
+
+[node name="Speed" type="Label" parent="Camera3D/CanvasLayer" unique_id=434555184]
+z_index = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -90.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "214"
+label_settings = SubResource("LabelSettings_gmlin")
+horizontal_alignment = 1
 
 [node name="crosshair" type="TextureRect" parent="Camera3D/CanvasLayer" unique_id=1784313874]
 anchors_preset = 8
@@ -47,6 +69,15 @@ size_flags_vertical = 4
 texture = ExtResource("3_75vfm")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Score" type="Label" parent="Camera3D/CanvasLayer" unique_id=607843960]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -25.0
+offset_bottom = 137.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_lvxji")
+horizontal_alignment = 1
 
 [node name="Marker3D" type="Marker3D" parent="Camera3D" unique_id=1591165490]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.53362817)
