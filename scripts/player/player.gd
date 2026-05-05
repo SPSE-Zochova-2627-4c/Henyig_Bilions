@@ -7,6 +7,7 @@ const KNIFE = preload("uid://dfvk5kghbnrnb")
 
 @onready var canvas_layer: CanvasLayer = $Camera3D/CanvasLayer
 @export var hitscn_dmg: int = 40
+@onready var SCORE: int = 0
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var camera_3d: Camera3D = $Camera3D
@@ -16,7 +17,6 @@ const KNIFE = preload("uid://dfvk5kghbnrnb")
 
 var SPEED = 6.5
 const JUMP_VELOCITY = 3.5
-@export var JUMP_SPEED = 6.5
 var ray_range = 2000
 var mouse_sensitivity = 0.002
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -77,8 +77,8 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, 0.5)
 		velocity.z = move_toward(velocity.z, 0, 0.5)
 	elif direction:
-		velocity.x = move_toward(velocity.x, direction.x*JUMP_SPEED, delta*20)
-		velocity.z = move_toward(velocity.z, direction.z*JUMP_SPEED, delta*20)
+		velocity.x = move_toward(velocity.x, direction.x*SPEED, delta*20)
+		velocity.z = move_toward(velocity.z, direction.z*SPEED, delta*20)
 	move_and_slide()
 
 

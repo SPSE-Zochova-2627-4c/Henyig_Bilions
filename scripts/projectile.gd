@@ -6,14 +6,19 @@ const DECAL_BLACK = preload("uid://cmj0ryqpeodd4")
 @onready var expl_area: Area3D = $ExplArea
 @onready var collision_shape_3d: CollisionShape3D = $ExplArea/CollisionShape3D
 @export var max_expl_dmg: float = 100
+@export var min_expl_dmg: float = 40
 
 var repeat = false
 var exploding = false
 var applied = []
-var remaining_time := 0.2     
+#var remaining_time := 0.2     
 var expansion_speed := 30.0  
-var dmg_falloff_speed := 300.0
+var dmg_falloff_speed := max_expl_dmg*3
 
+func change_col():
+	set_collision_layer_value(1,true)
+	set_collision_mask_value(1,true)
+	$HitArea.set_collision_mask_value(4,true)
 
 
 func _process(delta: float) -> void:
@@ -32,12 +37,13 @@ func _process(delta: float) -> void:
 			var space_state = get_world_3d().direct_space_state
 			var query = PhysicsRayQueryParameters3D.create(self.global_position, body.global_position)
 			var result = space_state.intersect_ray(query)
-			if result.collider == body:
+			if not result:
+				body.damage(int(round(max_expl_dmg)),max_expl_dmg,self.global_position,false)
+			elif result.collider == body:
 				body.damage(int(round(max_expl_dmg)),max_expl_dmg,self.global_position,false)
 				
 	max_expl_dmg -= dmg_falloff_speed * delta
-	remaining_time -= delta
-	if remaining_time <= 0:
+	if max_expl_dmg < min_expl_dmg:
 		queue_free()
 	
 
@@ -85,4 +91,3 @@ func _on_area_3d_body_entered(_body: Node3D) -> void:
 		#print(global_rotation,p.rotation)
 		add_sibling(p)
 		add_sibling(j)
-	

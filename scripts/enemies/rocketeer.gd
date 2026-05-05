@@ -9,6 +9,7 @@ extends CharacterBody3D
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 const BLOOD_STREAM = preload("uid://c80pdwpxa1lr7")
 var bleed_threshold = {140:true,120:true,80:true,40:true}
+var move = true
 
 @onready var external_force = false
 @onready var target = get_tree().get_root().get_node("World").get_node("Player")
@@ -22,9 +23,21 @@ var bleed_threshold = {140:true,120:true,80:true,40:true}
 
 
 @onready var tt = 0
+@onready var time_after_stopping = 0
+
+func clear_to_fire():
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(self.global_position,target.global_position)
+	var result = space_state.intersect_ray(query)
+ 
+	if not result.is_empty() and result.collider == target:
+		return true
+	return false
+
 func _physics_process(delta):
 	tt += delta
-	if tt >= 5:
+	time_after_stopping += delta
+	if tt >= 5 and not move and clear_to_fire() and time_after_stopping > 3:
 		$RPGSpawnPoint.spawn_rocket()
 		tt = 0
 	look_at(Vector3(target.global_position.x,self.global_position.y,target.global_position.z))
@@ -100,9 +113,18 @@ func damage(dmg,push_force,from_pos,blood_point):
 	external_force = true
 
 func setpath():
-	navigation_agent.target_position = target.global_position
-
-
+	if move:
+		if self.global_position.distance_to(target.global_position) > 15:
+			navigation_agent.target_position = target.global_position
+		elif clear_to_fire():
+			move = false
+			time_after_stopping = 0
+			navigation_agent.target_position = self.global_position
+		else:
+			navigation_agent.target_position = target.global_position
+	elif not move and self.global_position.distance_to(target.global_position) > 30 or not clear_to_fire():
+		move = true
+		navigation_agent.target_position = target.global_position
 
 
 func _on_timer_timeout() -> void:

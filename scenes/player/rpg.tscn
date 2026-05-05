@@ -54,7 +54,7 @@ animations = [{
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qith2"]
 
-[node name="RPG" type="Control"]
+[node name="RPG" type="Control" unique_id=576031147]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -67,7 +67,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 script = ExtResource("1_qith2")
 
-[node name="gun" type="AnimatedSprite2D" parent="."]
+[node name="gun" type="AnimatedSprite2D" parent="." unique_id=830083061]
 position = Vector2(0, 207)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_fewuk")
@@ -76,7 +76,8 @@ autoplay = "idle"
 frame = 5
 frame_progress = 1.0
 
-[node name="TextEdit" type="TextEdit" parent="."]
+[node name="TextEdit" type="TextEdit" parent="." unique_id=256624675]
+visible = false
 z_index = 1
 layout_mode = 1
 offset_left = 124.0
@@ -86,3 +87,36 @@ offset_bottom = 41.75
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxEmpty_qith2")
 placeholder_text = "8/40"
+
+[node name="DamageLabel" type="Label" parent="." unique_id=1007585987]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -557.0
+offset_top = -34.5
+offset_right = -114.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "100 — 20"
+horizontal_alignment = 2
+
+[node name="AmmoLabel" type="Label" parent="." unique_id=220945742]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 114.0
+offset_top = -34.5
+offset_right = 338.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "4/30"

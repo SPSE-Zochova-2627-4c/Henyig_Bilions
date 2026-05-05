@@ -4,6 +4,16 @@
 [ext_resource type="Script" uid="uid://di0aljms2mu7i" path="res://scripts/player/canvas_layer.gd" id="2_lvxji"]
 [ext_resource type="Texture2D" uid="uid://cwld5lao4a1ym" path="res://art/texture1.png" id="3_75vfm"]
 [ext_resource type="AudioStream" uid="uid://corjltxxtv4ge" path="res://sound/ding.mp3" id="4_0owmy"]
+[ext_resource type="Texture2D" uid="uid://dilbgea7q1c6h" path="res://art/heart_frames/heart_0000.png" id="4_fm80t"]
+[ext_resource type="Texture2D" uid="uid://bferq2byo03j5" path="res://art/heart_frames/heart_0001.png" id="5_gx1jg"]
+[ext_resource type="Texture2D" uid="uid://irlauonuxua4" path="res://art/heart_frames/heart_0002.png" id="6_ugbui"]
+[ext_resource type="Texture2D" uid="uid://b4svqogl5f0sw" path="res://art/heart_frames/heart_0003.png" id="7_fcs02"]
+[ext_resource type="Texture2D" uid="uid://blyjp6i38edtb" path="res://art/heart_frames/heart_0004.png" id="8_myrg7"]
+[ext_resource type="Texture2D" uid="uid://ct3ib0njww0w7" path="res://art/heart_frames/heart_0005.png" id="9_kvlxm"]
+[ext_resource type="Texture2D" uid="uid://dq54winak2dhk" path="res://art/heart_frames/heart_0006.png" id="10_uf5tr"]
+[ext_resource type="Texture2D" uid="uid://mtxi7mjn5k8h" path="res://art/heart_frames/heart_0007.png" id="11_lgqa7"]
+[ext_resource type="Texture2D" uid="uid://cvssfhxshcqo8" path="res://art/man_bar/grey_man.png" id="12_ugbui"]
+[ext_resource type="Texture2D" uid="uid://be0yxg55qkmby" path="res://art/man_bar/red_man.png" id="13_fcs02"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_65nyi"]
 height = 2.2
@@ -17,12 +27,43 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_lvxji"]
 font_size = 118
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ydkj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_fm80t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gx1jg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ugbui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fcs02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_myrg7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kvlxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uf5tr")
+}, {
+"duration": 6.0,
+"texture": ExtResource("11_lgqa7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_qhqgy"]
 size = Vector3(0.8, 0.4, 1)
 
 [node name="Player" type="CharacterBody3D" unique_id=1642852796]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 9
 script = ExtResource("1_lvxji")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=417179454]
@@ -48,7 +89,7 @@ offset_top = -90.0
 offset_bottom = -45.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "214"
+text = "6.5"
 label_settings = SubResource("LabelSettings_gmlin")
 horizontal_alignment = 1
 
@@ -73,11 +114,34 @@ stretch_mode = 5
 [node name="Score" type="Label" parent="Camera3D/CanvasLayer" unique_id=607843960]
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = -25.0
-offset_bottom = 137.0
+offset_top = -35.0
+offset_bottom = 127.0
 grow_horizontal = 2
+text = "0  0  0  0  0  0  0  0  0"
 label_settings = SubResource("LabelSettings_lvxji")
 horizontal_alignment = 1
+
+[node name="Heart" type="AnimatedSprite2D" parent="Camera3D/CanvasLayer" unique_id=2029565850]
+position = Vector2(1015, 230)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_8ydkj")
+autoplay = "default"
+frame_progress = 0.09473715
+
+[node name="BloodLevel" type="TextureProgressBar" parent="Camera3D/CanvasLayer" unique_id=1053348681]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -89.0
+offset_top = 105.0
+offset_right = -8.0
+offset_bottom = 283.0
+grow_horizontal = 0
+scale = Vector2(1.1, 1.1)
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("12_ugbui")
+texture_progress = ExtResource("13_fcs02")
 
 [node name="Marker3D" type="Marker3D" parent="Camera3D" unique_id=1591165490]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.53362817)
@@ -86,7 +150,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.53362817)
 transform = Transform3D(1, 0, 0, 0, -8.742278e-06, -1, 0, 200, -4.371139e-08, 0, 0, 0)
 
 [node name="RocketSpawn" type="Node3D" parent="Camera3D/Marker3D" unique_id=1680331503]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0011835098)
 
 [node name="Area3D" type="Area3D" parent="Camera3D" unique_id=199899427]
 
@@ -96,5 +160,3 @@ shape = SubResource("BoxShape3D_qhqgy")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1719662676]
 stream = ExtResource("4_0owmy")
-
-[node name="shit" type="Node3D" parent="." unique_id=157352208]

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cm4xai5es7y8c" path="res://scenes/player/player.tscn" id="1_k1nnb"]
 [ext_resource type="Texture2D" uid="uid://cwld5lao4a1ym" path="res://art/texture1.png" id="1_sxjc7"]
 [ext_resource type="PackedScene" uid="uid://dlus8k5iwdxf4" path="res://scenes/wall.tscn" id="5_0dnla"]
-[ext_resource type="PackedScene" uid="uid://cs7jpjbh4e1gh" path="res://scenes/enemies/walker.tscn" id="6_k075t"]
+[ext_resource type="PackedScene" uid="uid://cs7jpjbh4e1gh" path="res://scenes/enemies/rocketeer.tscn" id="6_k075t"]
 [ext_resource type="PackedScene" uid="uid://ba0u6t6pv8lqo" path="res://scenes/enemies/zombie.tscn" id="6_nfx0i"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_k075t"]
@@ -38,8 +38,8 @@ transform = Transform3D(1, 0, 0, 0, -0.799139, 0.601146, 0, -0.601146, -0.799139
 navigation_mesh = SubResource("NavigationMesh_k075t")
 
 [node name="Floor" type="StaticBody3D" parent="NavigationRegion3D" unique_id=34294834]
-collision_layer = 3
-collision_mask = 131
+collision_layer = 7
+collision_mask = 135
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor" unique_id=553415242]
 shape = SubResource("BoxShape3D_d13yl")

@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://cs7jpjbh4e1gh"]
 
-[ext_resource type="Script" uid="uid://bo34frlqdtto6" path="res://scripts/enemies/walker.gd" id="1_gl10n"]
-[ext_resource type="Texture2D" uid="uid://cwld5lao4a1ym" path="res://art/texture1.png" id="2_rdvt3"]
-[ext_resource type="PackedScene" uid="uid://ka66m5d4whxi" path="res://scenes/enemies/rpg_spawn_point.tscn" id="3_67ber"]
+[ext_resource type="Script" uid="uid://bo34frlqdtto6" path="res://scripts/enemies/rocketeer.gd" id="1_76d5w"]
+[ext_resource type="Texture2D" uid="uid://cwld5lao4a1ym" path="res://art/texture1.png" id="2_ft0tu"]
+[ext_resource type="PackedScene" uid="uid://ka66m5d4whxi" path="res://scenes/enemies/rpg_spawn_point.tscn" id="3_sms6f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a0lpg"]
 height = 2.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgxja"]
-albedo_texture = ExtResource("2_rdvt3")
+albedo_texture = ExtResource("2_ft0tu")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_irn3l"]
 height = 2.2
@@ -16,10 +16,10 @@ height = 2.2
 [sub_resource type="BoxMesh" id="BoxMesh_2jm2j"]
 size = Vector3(0.3, 0.3, 0.3)
 
-[node name="Walker" type="CharacterBody3D" unique_id=414510723]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("1_gl10n")
+[node name="Rocketeer" type="CharacterBody3D" unique_id=414510723]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_76d5w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2096307105]
 shape = SubResource("CapsuleShape3D_a0lpg")
@@ -47,13 +47,13 @@ autostart = true
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=116302317]
 avoidance_enabled = true
 height = 2.2
-radius = 0.8
+radius = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=265364486]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0416346, -0.32926655)
 mesh = SubResource("BoxMesh_2jm2j")
 
-[node name="RPGSpawnPoint" parent="." unique_id=31049790 instance=ExtResource("3_67ber")]
+[node name="RPGSpawnPoint" parent="." unique_id=31049790 instance=ExtResource("3_sms6f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -1)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

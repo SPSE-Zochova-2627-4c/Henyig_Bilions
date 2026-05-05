@@ -17,8 +17,10 @@ albedo_texture = ExtResource("2_q3m7n")
 [sub_resource type="SphereMesh" id="SphereMesh_6q2a6"]
 
 [node name="Projectile" type="RigidBody3D" unique_id=617839881]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_c8fcr")
-speed = 12.0
+speed = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1277485546]
 transform = Transform3D(0.2, 0, 0, 0, -8.742278e-09, -0.2, 0, 0.2, -8.742278e-09, 0, 0, 0)
@@ -36,10 +38,10 @@ transform = Transform3D(0.25, 0, 0, 0, -1.0927847e-08, -0.25, 0, 0.25, -1.092784
 shape = SubResource("CapsuleShape3D_6aapk")
 
 [node name="ExplArea" type="Area3D" parent="." unique_id=1742280724]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ExplArea" unique_id=432169873]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-visible = false
 shape = SubResource("SphereShape3D_6aapk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ExplArea/CollisionShape3D" unique_id=1366974412]

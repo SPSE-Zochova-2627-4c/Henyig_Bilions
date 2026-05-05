@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var explosion_dramaticism: float = 2
 @export var SPEED = 4
 @export var JUMP_SPEED = 4
+
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 const BLOOD_STREAM = preload("uid://c80pdwpxa1lr7")
 var bleed_threshold = {140:true,120:true,80:true,40:true}
@@ -24,6 +25,7 @@ func _physics_process(delta):
 	look_at(Vector3(target.global_position.x,self.global_position.y,target.global_position.z))
 	
 	if hp <= 0:
+		target.SCORE += 5
 		queue_free()
 		
 	if external_force:

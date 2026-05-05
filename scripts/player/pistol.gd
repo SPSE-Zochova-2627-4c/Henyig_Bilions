@@ -11,7 +11,8 @@ const max_clip: int = 8
 @onready var player: CharacterBody3D = $"../../.."
 @onready var ray_cast_3d: RayCast3D = $"../../Marker3D/RayCast3D"
 @onready var gun: AnimatedSprite2D = $gun
-@onready var text_edit: TextEdit = $TextEdit
+@onready var ammo_label: Label = $AmmoLabel
+@onready var damage_label: Label = $DamageLabel
 
 
 var time = 0
@@ -23,7 +24,8 @@ var cur_shoot_time = 0
 
 
 func _process(delta: float) -> void:
-	text_edit.text = str(player.pistol_clip,"/",player.pistol_ammo)
+	ammo_label.text = str(player.pistol_clip,"/",player.pistol_ammo)
+	damage_label.text = str(hitscn_dmg)
 	if Input.is_action_pressed("left_click") and not shoot:
 		if player.pistol_clip > 0:
 			start = false

@@ -4,8 +4,10 @@ const J = preload("uid://uuo0ujb2u4yh")
 @onready var player: CharacterBody3D = $"../../.."
 @onready var ray_cast_3d: RayCast3D = $"../../Marker3D/RayCast3D"
 @onready var rocket_spawn: Node3D = $"../../Marker3D/RocketSpawn"
-@onready var text_edit: TextEdit = $TextEdit
+
 @onready var gun: AnimatedSprite2D = $gun
+@onready var damage_label: Label = $DamageLabel
+@onready var ammo_label: Label = $AmmoLabel
 
 
 
@@ -15,6 +17,8 @@ var time = 0
 var start = false
 var shoot = false
 var cur_shoot_time = 0
+var min_dmg = 40
+var max_dmg = 100
 
 
 
@@ -22,7 +26,8 @@ var cur_shoot_time = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	text_edit.text = str(player.rpg_clip,"/",player.rpg_ammo)
+	ammo_label.text = str(player.rpg_clip,"/",player.rpg_ammo)
+	damage_label.text = str(max_dmg," — ", min_dmg)
 	
 	if Input.is_action_pressed("left_click") and not shoot:
 		if player.rpg_clip > 0:
@@ -59,6 +64,7 @@ func _process(delta: float) -> void:
 
 func shoot_projectile():
 	var p = projectile.instantiate()
+	
 	p.position = rocket_spawn.global_position
 	p.rotation = rocket_spawn.global_rotation
 	add_sibling(p)
