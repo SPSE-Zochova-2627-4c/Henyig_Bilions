@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dw1f13o6okpsq"]
+
+[ext_resource type="Texture2D" uid="uid://dkvb0e4ps6x6f" path="res://art/inventory/inv_bg.png" id="1_hpcy8"]
+[ext_resource type="Script" uid="uid://c1nmm712gg2ud" path="res://scripts/inventory/inv_gun.gd" id="1_jn6dc"]
+[ext_resource type="PackedScene" uid="uid://dlejosg7wi5rg" path="res://scenes/inventory/inv_slot.tscn" id="2_jn6dc"]
+
+[node name="InvGun" type="Control" unique_id=1146695420]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -792.0
+offset_bottom = -565.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jn6dc")
+
+[node name="bg" type="Sprite2D" parent="." unique_id=558276001]
+scale = Vector2(1.1999999, 0.27666667)
+texture = ExtResource("1_hpcy8")
+centered = false
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1988341751]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -30.0
+offset_right = 170.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 5
+
+[node name="InvSlot" parent="GridContainer" unique_id=81578617 instance=ExtResource("2_jn6dc")]
+layout_mode = 2
+
+[node name="InvSlot2" parent="GridContainer" unique_id=1247484173 instance=ExtResource("2_jn6dc")]
+layout_mode = 2
+
+[node name="InvSlot3" parent="GridContainer" unique_id=57088220 instance=ExtResource("2_jn6dc")]
+layout_mode = 2
+
+[node name="InvSlot4" parent="GridContainer" unique_id=320467181 instance=ExtResource("2_jn6dc")]
+layout_mode = 2
+
+[node name="InvSlot5" parent="GridContainer" unique_id=660802118 instance=ExtResource("2_jn6dc")]
+layout_mode = 2

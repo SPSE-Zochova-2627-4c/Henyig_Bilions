@@ -1,13 +1,14 @@
 extends CharacterBody3D
 
-const pistol = preload("uid://dureo6lwixg0")
-const hand = preload("uid://c31fi4iayokx6")
-const RPG = preload("uid://jcobrh6oadkh")
-const KNIFE = preload("uid://dfvk5kghbnrnb")
+
+
+@export var gun_inventory: Inventory
 
 @onready var canvas_layer: CanvasLayer = $Camera3D/CanvasLayer
 @export var hitscn_dmg: int = 40
 @onready var SCORE: int = 0
+
+
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var camera_3d: Camera3D = $Camera3D
@@ -26,9 +27,7 @@ var on_floor = true
 
 
 
-var in_hand = hand.instantiate()
-var in_hand_scene = hand
-var prev_hand_scene = hand
+
 @export var pistol_ammo = 48
 @export var rpg_ammo = 24
 var pistol_clip: int = 0
@@ -37,7 +36,6 @@ var bhop = 0
 @export var bhop_time = 0.2
 
 func _ready():
-	add_child(in_hand)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
@@ -92,37 +90,6 @@ func _input(event):
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(90), deg_to_rad(90))
 
 
-	if event.is_action_pressed("quick_switch"):
-		in_hand.queue_free()
-		in_hand = prev_hand_scene.instantiate()
-		var values = [prev_hand_scene, in_hand_scene]
-		swap(values)
-		prev_hand_scene = values[0]
-		in_hand_scene = values[1]
-		self.canvas_layer.add_child(in_hand)
-
-	if event.is_action_pressed("1"):
-		prev_hand_scene = in_hand_scene
-		in_hand_scene = KNIFE
-		in_hand.queue_free()
-		in_hand = KNIFE.instantiate()
-		self.canvas_layer.add_child(in_hand)
-		
-	if event.is_action_pressed("2"):
-		prev_hand_scene = in_hand_scene
-		in_hand_scene = pistol
-		in_hand.queue_free()
-		in_hand = pistol.instantiate()
-		self.canvas_layer.add_child(in_hand)
-		
-	if event.is_action_pressed("3"):
-		prev_hand_scene = in_hand_scene
-		in_hand_scene = RPG
-		in_hand.queue_free()
-		in_hand = RPG.instantiate()
-		self.canvas_layer.add_child(in_hand)
-
-
 
 
 
@@ -134,7 +101,3 @@ func damage(dmg,push_force,from_pos,_blood_point):
 	
 	velocity += direction
 	
-func swap(arr):
-	var j = arr[0]
-	arr[0] = arr[1]
-	arr[1] = j

@@ -43,6 +43,7 @@ func _physics_process(delta):
 	look_at(Vector3(target.global_position.x,self.global_position.y,target.global_position.z))
 	
 	if hp <= 0:
+		target.SCORE += 15
 		queue_free()
 		
 	if external_force:
