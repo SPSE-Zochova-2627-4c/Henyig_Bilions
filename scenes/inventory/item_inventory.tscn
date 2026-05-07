@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dg8tlml1f88yy"]
+
+[ext_resource type="Texture2D" uid="uid://dkvb0e4ps6x6f" path="res://art/inventory/inv_bg.png" id="1_lc70a"]
+[ext_resource type="PackedScene" uid="uid://dlejosg7wi5rg" path="res://scenes/inventory/inv_slot.tscn" id="2_cprnn"]
+
+[node name="ItemInventory" type="Control" unique_id=355626522]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -792.0
+offset_bottom = -498.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=632406837]
+scale = Vector2(1.1999999, 0.5)
+texture = ExtResource("1_lc70a")
+centered = false
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=277780709]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -65.0
+offset_right = 170.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 5
+
+[node name="InvSlot" parent="GridContainer" unique_id=81578617 instance=ExtResource("2_cprnn")]
+layout_mode = 2
+
+[node name="InvSlot2" parent="GridContainer" unique_id=1616755358 instance=ExtResource("2_cprnn")]
+layout_mode = 2
+
+[node name="InvSlot3" parent="GridContainer" unique_id=565911752 instance=ExtResource("2_cprnn")]
+layout_mode = 2
+
+[node name="InvSlot4" parent="GridContainer" unique_id=1246893378 instance=ExtResource("2_cprnn")]
+layout_mode = 2
+
+[node name="InvSlot5" parent="GridContainer" unique_id=1843126340 instance=ExtResource("2_cprnn")]
+layout_mode = 2
+
+[node name="InvSlot6" parent="GridContainer" unique_id=438588710 instance=ExtResource("2_cprnn")]
+layout_mode = 2
+
+[node name="InvSlot7" parent="GridContainer" unique_id=1051013514 instance=ExtResource("2_cprnn")]
+layout_mode = 2
+
+[node name="InvSlot8" parent="GridContainer" unique_id=9377937 instance=ExtResource("2_cprnn")]
+layout_mode = 2
+
+[node name="InvSlot9" parent="GridContainer" unique_id=1899199228 instance=ExtResource("2_cprnn")]
+layout_mode = 2
+
+[node name="InvSlot10" parent="GridContainer" unique_id=1105787182 instance=ExtResource("2_cprnn")]
+layout_mode = 2

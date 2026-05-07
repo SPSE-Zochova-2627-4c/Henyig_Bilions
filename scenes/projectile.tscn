@@ -48,4 +48,10 @@ shape = SubResource("SphereShape3D_6aapk")
 material_override = SubResource("StandardMaterial3D_softn")
 mesh = SubResource("SphereMesh_6q2a6")
 
+[node name="LifeTimer" type="Timer" parent="." unique_id=296656692]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="HitArea" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

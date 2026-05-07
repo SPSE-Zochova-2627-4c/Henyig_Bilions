@@ -91,3 +91,22 @@ func _on_area_3d_body_entered(_body: Node3D) -> void:
 		#print(global_rotation,p.rotation)
 		add_sibling(p)
 		add_sibling(j)
+
+
+func _on_life_timer_timeout() -> void:
+	if repeat == false:
+		visible = false
+		exploding = true
+		repeat = true
+		
+		var p = DECAL_BLACK.instantiate()
+		var j = EXPLOSION.instantiate()
+		p.position = global_position
+		j.position = global_position
+
+		
+		p.rotation.y = global_rotation.y
+		j.rotation.y = global_rotation.y
+		#print(global_rotation,p.rotation)
+		add_sibling(p)
+		add_sibling(j)

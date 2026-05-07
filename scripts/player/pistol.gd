@@ -7,6 +7,7 @@ const max_clip: int = 8
 
 @export var hitscn_dmg: int = 40
 @export var shoot_time: float = 0.25
+@export var reload_time: float = 1
 
 @onready var player: CharacterBody3D = $"../../.."
 @onready var ray_cast_3d: RayCast3D = $"../../Marker3D/RayCast3D"
@@ -15,20 +16,40 @@ const max_clip: int = 8
 @onready var damage_label: Label = $DamageLabel
 
 
-var time = 0
-var start = false
+
+
 var shoot = false
-var cur_shoot_time = 0
 var real_dmg: float = 0
 
-func _process(delta: float) -> void:
+@onready var reload_timer: Timer = $"../../../ReloadTimer"
+@onready var shoot_cooldown_timer: Timer = $"../../../ShootCooldownTimer"
+func _ready() -> void:
+	reload_timer.stop()
+	shoot_cooldown_timer.stop()
+	reload_timer.timeout.connect(_on_reload_timer_timeout.bind())
+	shoot_cooldown_timer.timeout.connect(_on_shoot_cooldown_timer_timeout.bind())
+	
+func _on_reload_timer_timeout() -> void:
+	if player.pistol_ammo+player.pistol_clip >= max_clip:
+		player.pistol_ammo += player.pistol_clip
+		player.pistol_ammo -= max_clip
+		player.pistol_clip = max_clip
+	else:
+		player.pistol_clip = player.pistol_ammo
+		player.pistol_ammo = 0
+	gun.play("idle")
+
+func _on_shoot_cooldown_timer_timeout() -> void:
+	shoot = false
+	gun.play("idle")
+
+func _process(_delta: float) -> void:
 	real_dmg = hitscn_dmg*player.DMG_MULTIPLYER
 	ammo_label.text = str(player.pistol_clip,"/",player.pistol_ammo)
-	damage_label.text = str(real_dmg)
+	damage_label.text = str(int(real_dmg))
+	
 	if Input.is_action_pressed("left_click") and not shoot:
 		if player.pistol_clip > 0:
-			start = false
-			cur_shoot_time = 0
 			shoot = true
 			player.pistol_clip -= 1
 			left_click()
@@ -38,34 +59,9 @@ func _process(delta: float) -> void:
 
 
 
-
-	if shoot:
-		cur_shoot_time += delta
-		if cur_shoot_time > shoot_time:
-			shoot = false
-			gun.play("idle")
-
-	if start:
-		time += delta
-		if time > 1:
-			if player.pistol_ammo+player.pistol_clip >= max_clip:
-				player.pistol_ammo += player.pistol_clip
-				player.pistol_ammo -= max_clip
-				player.pistol_clip = max_clip
-			else:
-				player.pistol_clip = player.pistol_ammo
-				player.pistol_ammo = 0
-			gun.play("idle")
-			start = false
-
-
-
-
-
 func _input(event):
 	if event.is_action_pressed("reload") and player.pistol_ammo > 0 and player.pistol_clip < max_clip and not shoot:
-		start = true
-		time = 0
+		reload_timer.start(reload_time)
 		gun.play("reload")
 
 
@@ -94,6 +90,7 @@ func spawn(pos: Vector3, normal: Vector3):
 
 
 func left_click():
+	shoot_cooldown_timer.start(shoot_time)
 	if ray_cast_3d.is_colliding():
 		spawn(ray_cast_3d.get_collision_point(), ray_cast_3d.get_collision_normal())
 		if ray_cast_3d.get_collider().has_method("damage"):

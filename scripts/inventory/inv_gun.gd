@@ -5,10 +5,9 @@ extends Control
 @onready var canvas_layer: CanvasLayer = $".."
 @onready var weapon_list = [null,null,null,null,null]
 
-var pistol = preload("uid://dureo6lwixg0")
+
 var hand = preload("uid://c31fi4iayokx6")
-var RPG = preload("uid://jcobrh6oadkh")
-var KNIFE = preload("uid://dfvk5kghbnrnb")
+
 
 var in_hand = hand.instantiate()
 var in_hand_scene = 1

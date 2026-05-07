@@ -8,21 +8,26 @@ extends Control
 @export var shoot_time: float = 2
 var shoot = false
 var cur_shoot_time = 0
+@onready var shoot_cooldown_timer: Timer = $"../../../ShootCooldownTimer"
 
-func _process(delta: float) -> void:
+func _ready() -> void:
+	shoot_cooldown_timer.stop()
+	shoot_cooldown_timer.timeout.connect(_on_shoot_cooldown_timer_timeout.bind())
+
+func _on_shoot_cooldown_timer_timeout() -> void:
+	player.hp += 50
+	shoot = false
+	item.play("idle")
+
+func _process(_delta: float) -> void:
 	ammo_label.text = str(5)
 	damage_label.text = str("+50 HP")
 	if Input.is_action_pressed("left_click") and not shoot:
 			left_click()
 			item.play("shoot")
-			
-	if shoot:
-		cur_shoot_time += delta
-		if cur_shoot_time > shoot_time:
-			shoot = false
-			item.play("idle")
-			
+
+
 func left_click():
 	shoot = true
-	cur_shoot_time = 0
-	player.hp += 50
+	shoot_cooldown_timer.start(shoot_time)
+	

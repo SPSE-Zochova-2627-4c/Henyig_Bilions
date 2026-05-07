@@ -29,6 +29,7 @@ var on_floor = true
 
 
 const BLOOD_STREAM = preload("uid://c80pdwpxa1lr7")
+@onready var blood_spawn_point: Node3D = $BloodPoint
 
 @export var pistol_ammo = 48
 @export var rpg_ammo = 24
@@ -37,13 +38,7 @@ var rpg_clip: int = 0
 var bhop = 0
 @export var bhop_time = 0.2
 
-@onready var blood_points = [
-	$BloodPoint,
-	$BloodPoint2,
-	$BloodPoint3,
-	$BloodPoint4,
-	$BloodPoint5
-]
+
 
 
 func _ready():
@@ -105,36 +100,15 @@ func _input(event):
 func spawn_blood(pos: Vector3):
 	var p = BLOOD_STREAM.instantiate()
 	add_child(p)
+	
 	p.global_position = pos
 	p.rotate(Vector3(0,1,0), randf_range(0, 2*PI))
 
-func damage(dmg,push_force,from_pos,blood_point):
+func damage(dmg,push_force,from_pos,_blood_point):
 	hp -= dmg
 	var direction = self.global_position.direction_to(from_pos)
 	var speed = explosion_dramaticism * push_force
 	direction *= -speed
 	velocity += direction
-	
-	if blood_point is bool:
-		var dist = -1
-		for bp in blood_points:
-			if dist == -1:
-				dist = from_pos.distance_to(bp.global_position)
-				blood_point = bp
-							
-			elif from_pos.distance_to(bp.global_position) < dist:
-				dist = from_pos.distance_to(bp.global_position)
-				blood_point = bp
-			blood_point = blood_point.global_position
-					
-				#var ratio = randf_range(0, capsule_rad)
-				##var ray_spawn_point = Vector3(self.global_position.x+(randi_range(-1,0)*ratio)*5,self.global_position.y-randf_range(0, capsule_height),self.global_position.z+(randi_range(-1,0)*(capsule_rad-ratio))*5)
-				#var ray_spawn_point = Vector3(self.global_position.x+50,self.global_position.y,self.global_position.z+50)
-				#var space_state = get_world_3d().direct_space_state
-				#var intersection = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(ray_spawn_point, self.global_position,self.collision_mask))
-				#if intersection["collider_id"] == self.get_instance_id():
-					#pass
-				#blood_point = intersection["position"]
-	spawn_blood(blood_point)
-	blood_point = false
-	
+	if randi_range(1,100) <= dmg:
+		spawn_blood(blood_spawn_point.global_position)

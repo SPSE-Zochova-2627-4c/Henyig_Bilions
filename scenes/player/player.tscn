@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cvssfhxshcqo8" path="res://art/man_bar/grey_man.png" id="12_ugbui"]
 [ext_resource type="Texture2D" uid="uid://be0yxg55qkmby" path="res://art/man_bar/red_man.png" id="13_fcs02"]
 [ext_resource type="PackedScene" uid="uid://dw1f13o6okpsq" path="res://scenes/inventory/inv_gun.tscn" id="14_fcs02"]
+[ext_resource type="PackedScene" uid="uid://dg8tlml1f88yy" path="res://scenes/inventory/item_inventory.tscn" id="16_kvlxm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_65nyi"]
 height = 2.2
@@ -149,11 +150,18 @@ texture_progress = ExtResource("13_fcs02")
 [node name="InvGun" parent="Camera3D/CanvasLayer" unique_id=1146695420 instance=ExtResource("14_fcs02")]
 top_level = true
 z_index = 1
-offset_left = 770.0
-offset_top = 520.0
-offset_right = -22.0
-offset_bottom = -45.0
+offset_left = 773.3
+offset_top = 553.4
+offset_right = -18.699951
+offset_bottom = -11.599976
 rotation = -0.10471976
+
+[node name="ItemInventory" parent="Camera3D/CanvasLayer" unique_id=355626522 instance=ExtResource("16_kvlxm")]
+offset_left = 27.7
+offset_top = 449.1
+offset_right = -764.30005
+offset_bottom = -48.900024
+rotation = 0.10471976
 
 [node name="Marker3D" type="Marker3D" parent="Camera3D" unique_id=1591165490]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.53362817)
@@ -170,20 +178,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0011835098)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8504094)
 shape = SubResource("BoxShape3D_qhqgy")
 
+[node name="BloodPoint" type="Node3D" parent="." unique_id=580901059]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1719662676]
 stream = ExtResource("4_0owmy")
 
-[node name="BloodPoint" type="Node3D" parent="." unique_id=580901059]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42400765, -0.4830406)
+[node name="ReloadTimer" type="Timer" parent="." unique_id=1350251807]
+one_shot = true
 
-[node name="BloodPoint2" type="Node3D" parent="." unique_id=435026637]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.070206374, -0.4830406)
-
-[node name="BloodPoint3" type="Node3D" parent="." unique_id=1679539832]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1439513, 0.50013644, -0.46455425)
-
-[node name="BloodPoint4" type="Node3D" parent="." unique_id=222463235]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35692024, 0.25821358, -0.42864263)
-
-[node name="BloodPoint5" type="Node3D" parent="." unique_id=864815349]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23659545, 0.0032160878, -0.41946882)
+[node name="ShootCooldownTimer" type="Timer" parent="." unique_id=1732682056]
+one_shot = true

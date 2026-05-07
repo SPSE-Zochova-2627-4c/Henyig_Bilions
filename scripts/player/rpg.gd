@@ -9,32 +9,37 @@ const J = preload("uid://uuo0ujb2u4yh")
 @onready var damage_label: Label = $DamageLabel
 @onready var ammo_label: Label = $AmmoLabel
 
+@onready var reload_timer: Timer = $"../../../ReloadTimer"
+@onready var shoot_cooldown_timer: Timer = $"../../../ShootCooldownTimer"
 
-
+@export var reload_time: float = 1
 @export var shoot_time: float = 0.75
 @export var max_clip: int = 4
-var time = 0
-var start = false
 var shoot = false
-var cur_shoot_time = 0
 var min_dmg = 40
 var max_dmg = 100
 var real_min_dmg: float = 0
 var real_max_dmg: float = 0 
 
+func _ready() -> void:
+	reload_timer.stop()
+	shoot_cooldown_timer.stop()
+	reload_timer.timeout.connect(_on_reload_timer_timeout.bind())
+	shoot_cooldown_timer.timeout.connect(_on_shoot_cooldown_timer_timeout.bind())
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	real_max_dmg = max_dmg*player.DMG_MULTIPLYER
 	real_min_dmg = real_max_dmg-60
 	ammo_label.text = str(player.rpg_clip,"/",player.rpg_ammo)
-	damage_label.text = str(real_max_dmg," — ", real_min_dmg)
+	damage_label.text = str(int(real_max_dmg)," — ", int(real_min_dmg))
 	
 	if Input.is_action_pressed("left_click") and not shoot:
 		if player.rpg_clip > 0:
-			start = false
-			cur_shoot_time = 0
 			shoot = true
+			shoot_cooldown_timer.start(shoot_time)
 			player.rpg_clip -= 1
 			shoot_projectile()
 			gun.play("shoot")
@@ -43,25 +48,21 @@ func _process(delta: float) -> void:
 
 
 
-	if shoot:
-		cur_shoot_time += delta
-		if cur_shoot_time > shoot_time:
-			shoot = false
-			gun.play("idle")
 
-	if start:
-		time += delta
-		if time > 1:
-			if player.rpg_ammo+player.rpg_clip >= max_clip:
-				player.rpg_ammo += player.rpg_clip
-				player.rpg_ammo -= max_clip
-				player.rpg_clip = max_clip
-			else:
-				player.rpg_clip = player.rpg_ammo
-				player.rpg_ammo = 0
-			gun.play("idle")
-			start = false
 
+func _on_reload_timer_timeout() -> void:
+	if player.rpg_ammo+player.rpg_clip >= max_clip:
+		player.rpg_ammo += player.rpg_clip
+		player.rpg_ammo -= max_clip
+		player.rpg_clip = max_clip
+	else:
+		player.rpg_clip = player.rpg_ammo
+		player.rpg_ammo = 0
+	gun.play("idle")
+
+func _on_shoot_cooldown_timer_timeout() -> void:
+	shoot = false
+	gun.play("idle")
 
 func shoot_projectile():
 	var p = projectile.instantiate()
@@ -86,6 +87,5 @@ func spawn(pos: Vector3, normal: Vector3):
 	
 func _input(event):
 	if event.is_action_pressed("reload") and player.rpg_ammo > 0 and player.rpg_clip < max_clip and not shoot:
-		start = true
-		time = 0
+		reload_timer.start(reload_time)
 		gun.play("reload")
