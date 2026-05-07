@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://mqqbkfef5731"]
+
+[ext_resource type="Script" uid="uid://7gtfro0ga3ow" path="res://scripts/inventory/inventory_item.gd" id="1_1b2sc"]
+[ext_resource type="Texture2D" uid="uid://wsw6tlpg3jcy" path="res://art/inventory/dmg_item.png" id="2_tywat"]
+
+[resource]
+script = ExtResource("1_1b2sc")
+name = "DMGBoost"
+texture = ExtResource("2_tywat")
+uid = "uid://6m130fy5t8y3"
+metadata/_custom_type_script = "uid://7gtfro0ga3ow"

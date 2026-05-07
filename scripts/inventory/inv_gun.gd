@@ -31,13 +31,9 @@ func update_slots():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quick_switch"):
-		in_hand.queue_free()
-		in_hand = prev_hand_scene.instantiate()
 		var values = [prev_hand_scene, in_hand_scene]
 		swap(values)
-		prev_hand_scene = values[0]
-		in_hand_scene = values[1]
-		canvas_layer.add_child(in_hand)
+		swap_to(prev_hand_scene)
 		
 	if event.is_action_pressed("1"):
 		swap_to(1)
@@ -48,6 +44,12 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("3"):
 		swap_to(3)
+	
+	if event.is_action_pressed("4"):
+		swap_to(4)
+		
+	if event.is_action_pressed("5"):
+		swap_to(5)
 
 func swap_to(n):
 	if weapon_list[n-1]:

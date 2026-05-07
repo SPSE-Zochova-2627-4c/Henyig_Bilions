@@ -5,8 +5,10 @@
 [ext_resource type="Resource" uid="uid://bwoimycs8dmsm" path="res://scripts/inventory/items/pistol_item.tres" id="2_kqmg5"]
 [ext_resource type="Script" uid="uid://cflgt14ae1ifi" path="res://scripts/inventory/inventory.gd" id="3_f3fll"]
 [ext_resource type="Resource" uid="uid://c1oy0j0txktuw" path="res://scripts/inventory/items/rpg_item.tres" id="4_wvn0w"]
+[ext_resource type="Resource" uid="uid://mqqbkfef5731" path="res://scripts/inventory/items/dmg_boost.tres" id="5_wvn0w"]
+[ext_resource type="Resource" uid="uid://d13117rccxnfi" path="res://scripts/inventory/items/heal_item.tres" id="6_l724c"]
 
 [resource]
 script = ExtResource("3_f3fll")
-items = Array[ExtResource("1_qogtm")]([ExtResource("2_f3fll"), ExtResource("2_kqmg5"), ExtResource("4_wvn0w"), null, null])
+items = Array[ExtResource("1_qogtm")]([ExtResource("2_f3fll"), ExtResource("2_kqmg5"), ExtResource("4_wvn0w"), ExtResource("5_wvn0w"), ExtResource("6_l724c")])
 metadata/_custom_type_script = "uid://cflgt14ae1ifi"

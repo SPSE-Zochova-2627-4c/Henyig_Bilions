@@ -172,3 +172,18 @@ shape = SubResource("BoxShape3D_qhqgy")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1719662676]
 stream = ExtResource("4_0owmy")
+
+[node name="BloodPoint" type="Node3D" parent="." unique_id=580901059]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42400765, -0.4830406)
+
+[node name="BloodPoint2" type="Node3D" parent="." unique_id=435026637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.070206374, -0.4830406)
+
+[node name="BloodPoint3" type="Node3D" parent="." unique_id=1679539832]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1439513, 0.50013644, -0.46455425)
+
+[node name="BloodPoint4" type="Node3D" parent="." unique_id=222463235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35692024, 0.25821358, -0.42864263)
+
+[node name="BloodPoint5" type="Node3D" parent="." unique_id=864815349]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23659545, 0.0032160878, -0.41946882)

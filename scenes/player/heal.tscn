@@ -1,14 +1,14 @@
-[gd_scene format=3 uid="uid://6m130fy5t8y3"]
+[gd_scene format=3 uid="uid://bsl4boxqvi0n6"]
 
-[ext_resource type="Texture2D" uid="uid://ydhsfvgkgiq0" path="res://art/inventory/palm_empty.png" id="1_6loqi"]
-[ext_resource type="Script" uid="uid://0tc0sbau3glj" path="res://scripts/player/dmg_boost_item.gd" id="1_sssyf"]
-[ext_resource type="Texture2D" uid="uid://cg0b5dkj8f7pu" path="res://art/inventory/hand_closed.png" id="3_bg567"]
+[ext_resource type="Script" uid="uid://dx0kxy1xhkch4" path="res://scripts/player/heal.gd" id="1_w7iqd"]
+[ext_resource type="Texture2D" uid="uid://ydhsfvgkgiq0" path="res://art/inventory/palm_empty.png" id="2_6vxow"]
+[ext_resource type="Texture2D" uid="uid://cg0b5dkj8f7pu" path="res://art/inventory/hand_closed.png" id="3_stawj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sssyf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_6loqi")
+"texture": ExtResource("2_6vxow")
 }],
 "loop": true,
 "name": &"idle",
@@ -16,33 +16,31 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_6loqi")
+"texture": ExtResource("2_6vxow")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_bg567")
+"texture": ExtResource("3_stawj")
 }],
 "loop": false,
 "name": &"shoot",
 "speed": 5.0
 }]
 
-[node name="DMGBoost" type="Control" unique_id=2105608798]
+[node name="Heal" type="Control" unique_id=2105608798]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_sssyf")
+script = ExtResource("1_w7iqd")
 
 [node name="item" type="AnimatedSprite2D" parent="." unique_id=939881809]
 position = Vector2(576, 500)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_sssyf")
-animation = &"shoot"
+animation = &"idle"
 autoplay = "idle"
-frame = 1
-frame_progress = 1.0
 
 [node name="DamageLabel" type="Label" parent="." unique_id=2082787988]
 layout_mode = 1
@@ -58,7 +56,7 @@ offset_bottom = 34.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
-text = "+1 x DMG"
+text = "+50 HP"
 horizontal_alignment = 2
 
 [node name="AmmoLabel" type="Label" parent="." unique_id=2089772732]
@@ -79,9 +77,9 @@ text = "5"
 
 [node name="Label" type="Label" parent="." unique_id=276961795]
 layout_mode = 0
-offset_left = 508.0
-offset_top = 439.0
-offset_right = 627.0
-offset_bottom = 508.0
+offset_left = 479.0
+offset_top = 430.0
+offset_right = 654.0
+offset_bottom = 499.0
 theme_override_font_sizes/font_size = 50
-text = "DMG"
+text = "BLOOD"

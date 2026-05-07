@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://d13117rccxnfi"]
+
+[ext_resource type="Script" uid="uid://7gtfro0ga3ow" path="res://scripts/inventory/inventory_item.gd" id="1_ybw3u"]
+[ext_resource type="Texture2D" uid="uid://8cyqv1qcvsua" path="res://art/inventory/hp_item.png" id="2_ip75x"]
+
+[resource]
+script = ExtResource("1_ybw3u")
+name = "heal"
+texture = ExtResource("2_ip75x")
+uid = "uid://bsl4boxqvi0n6"
+metadata/_custom_type_script = "uid://7gtfro0ga3ow"
