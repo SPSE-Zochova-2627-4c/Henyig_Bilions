@@ -8,7 +8,7 @@ var bg_color_select = preload("uid://bh4o4y11kthhy")
 
 
 
-func update(item: GunInventoryItem):
+func update(item: InventoryItem):
 	if !item:
 		item_sprite.visible = false
 	else:

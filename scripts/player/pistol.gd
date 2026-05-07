@@ -19,13 +19,12 @@ var time = 0
 var start = false
 var shoot = false
 var cur_shoot_time = 0
-
-
-
+var real_dmg: float = 0
 
 func _process(delta: float) -> void:
+	real_dmg = hitscn_dmg*player.DMG_MULTIPLYER
 	ammo_label.text = str(player.pistol_clip,"/",player.pistol_ammo)
-	damage_label.text = str(hitscn_dmg)
+	damage_label.text = str(real_dmg)
 	if Input.is_action_pressed("left_click") and not shoot:
 		if player.pistol_clip > 0:
 			start = false
@@ -98,5 +97,5 @@ func left_click():
 	if ray_cast_3d.is_colliding():
 		spawn(ray_cast_3d.get_collision_point(), ray_cast_3d.get_collision_normal())
 		if ray_cast_3d.get_collider().has_method("damage"):
-			ray_cast_3d.get_collider().damage(hitscn_dmg,0,player.global_position,ray_cast_3d.get_collision_point())
+			ray_cast_3d.get_collider().damage(real_dmg,0,player.global_position,ray_cast_3d.get_collision_point())
 		

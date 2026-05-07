@@ -19,15 +19,16 @@ var shoot = false
 var cur_shoot_time = 0
 var min_dmg = 40
 var max_dmg = 100
-
-
-
+var real_min_dmg: float = 0
+var real_max_dmg: float = 0 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	real_max_dmg = max_dmg*player.DMG_MULTIPLYER
+	real_min_dmg = real_max_dmg-60
 	ammo_label.text = str(player.rpg_clip,"/",player.rpg_ammo)
-	damage_label.text = str(max_dmg," — ", min_dmg)
+	damage_label.text = str(real_max_dmg," — ", real_min_dmg)
 	
 	if Input.is_action_pressed("left_click") and not shoot:
 		if player.rpg_clip > 0:
@@ -64,7 +65,8 @@ func _process(delta: float) -> void:
 
 func shoot_projectile():
 	var p = projectile.instantiate()
-	
+	p.max_expl_dmg = real_max_dmg
+	p.min_expl_dmg = real_min_dmg
 	p.position = rocket_spawn.global_position
 	p.rotation = rocket_spawn.global_rotation
 	add_sibling(p)

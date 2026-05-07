@@ -23,7 +23,7 @@ var mouse_sensitivity = 0.002
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var hp = 500
 var on_floor = true
-
+@onready var DMG_MULTIPLYER: float = 1
 
 
 

@@ -16,10 +16,12 @@ var time = 0
 var shoot = false
 var cur_shoot_time = 0
 
+@onready var real_dmg: float = 0
 
 
 
 func _process(delta: float) -> void:
+	real_dmg = dmg*player.DMG_MULTIPLYER
 	if Input.is_action_pressed("left_click") and not shoot:
 		cur_shoot_time = 0
 		shoot = true
@@ -39,4 +41,4 @@ func cut():
 	#if area_3d.has_overlapping_bodies():
 		for body in area_3d.get_overlapping_bodies():
 			if body.has_method("damage"):
-				body.damage(dmg,0,player.global_position,false)
+				body.damage(real_dmg,0,player.global_position,false)

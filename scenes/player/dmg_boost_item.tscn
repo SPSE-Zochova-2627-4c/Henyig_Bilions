@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://6m130fy5t8y3"]
+
+[ext_resource type="Texture2D" uid="uid://ydhsfvgkgiq0" path="res://art/inventory/palm_empty.png" id="1_6loqi"]
+[ext_resource type="Script" uid="uid://0tc0sbau3glj" path="res://scripts/player/dmg_boost_item.gd" id="1_sssyf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sssyf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6loqi")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6loqi")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[node name="DMGBoost" type="Control" unique_id=2105608798]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sssyf")
+
+[node name="item" type="AnimatedSprite2D" parent="." unique_id=939881809]
+position = Vector2(576, 600)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_sssyf")
+animation = &"idle"
+
+[node name="DamageLabel" type="Label" parent="." unique_id=2082787988]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -553.0
+offset_top = -34.5
+offset_right = -114.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "+1 x DMG"
+horizontal_alignment = 2
+
+[node name="AmmoLabel" type="Label" parent="." unique_id=2089772732]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 114.0
+offset_top = -34.5
+offset_right = 469.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "5"
+
+[node name="Label" type="Label" parent="." unique_id=276961795]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 439.0
+offset_right = 627.0
+offset_bottom = 508.0
+theme_override_font_sizes/font_size = 50
+text = "DMG"

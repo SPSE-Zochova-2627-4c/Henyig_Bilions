@@ -81,7 +81,7 @@ animations = [{
 "speed": 55.0
 }]
 
-[node name="Knife" type="Control"]
+[node name="Knife" type="Control" unique_id=1062562624]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -95,7 +95,7 @@ size_flags_vertical = 4
 script = ExtResource("1_kol1t")
 shoot_time = 0.5
 
-[node name="gun" type="AnimatedSprite2D" parent="."]
+[node name="gun" type="AnimatedSprite2D" parent="." unique_id=1208676242]
 position = Vector2(0, 96.6)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_rwrp1")
