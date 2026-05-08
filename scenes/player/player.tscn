@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cvssfhxshcqo8" path="res://art/man_bar/grey_man.png" id="12_ugbui"]
 [ext_resource type="Texture2D" uid="uid://be0yxg55qkmby" path="res://art/man_bar/red_man.png" id="13_fcs02"]
 [ext_resource type="PackedScene" uid="uid://dw1f13o6okpsq" path="res://scenes/inventory/inv_gun.tscn" id="14_fcs02"]
+[ext_resource type="Script" uid="uid://c1nmm712gg2ud" path="res://scripts/inventory/inv_gun.gd" id="15_uf5tr"]
 [ext_resource type="PackedScene" uid="uid://dg8tlml1f88yy" path="res://scenes/inventory/item_inventory.tscn" id="16_kvlxm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_65nyi"]
@@ -93,6 +94,7 @@ offset_top = -90.0
 offset_bottom = -45.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_font_sizes/font_size = 16
 text = "6.5"
 label_settings = SubResource("LabelSettings_gmlin")
 horizontal_alignment = 1
@@ -136,9 +138,9 @@ frame_progress = 0.09473715
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -89.0
+offset_left = -96.0
 offset_top = 105.0
-offset_right = -8.0
+offset_right = -15.0
 offset_bottom = 283.0
 grow_horizontal = 0
 scale = Vector2(1.1, 1.1)
@@ -147,19 +149,48 @@ fill_mode = 3
 texture_under = ExtResource("12_ugbui")
 texture_progress = ExtResource("13_fcs02")
 
-[node name="InvGun" parent="Camera3D/CanvasLayer" unique_id=1146695420 instance=ExtResource("14_fcs02")]
+[node name="HPpct" type="Label" parent="Camera3D/CanvasLayer" unique_id=226571436]
+offset_left = 1049.0
+offset_top = 105.0
+offset_right = 1152.0
+offset_bottom = 252.0
+theme_override_font_sizes/font_size = 30
+text = "100.0%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ETA0" type="Label" parent="Camera3D/CanvasLayer" unique_id=1898353821]
+offset_left = 1056.0
+offset_top = 301.0
+offset_right = 1145.0
+offset_bottom = 350.0
+theme_override_font_sizes/font_size = 20
+text = "0 IN
+100"
+horizontal_alignment = 1
+
+[node name="InvControl" type="Control" parent="Camera3D/CanvasLayer" unique_id=945336387]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("15_uf5tr")
+
+[node name="InvGun" parent="Camera3D/CanvasLayer/InvControl" unique_id=1146695420 instance=ExtResource("14_fcs02")]
 top_level = true
 z_index = 1
+layout_mode = 1
 offset_left = 773.3
 offset_top = 553.4
 offset_right = -18.699951
 offset_bottom = -11.599976
 rotation = -0.10471976
 
-[node name="ItemInventory" parent="Camera3D/CanvasLayer" unique_id=355626522 instance=ExtResource("16_kvlxm")]
+[node name="ItemInventory" parent="Camera3D/CanvasLayer/InvControl" unique_id=355626522 instance=ExtResource("16_kvlxm")]
+layout_mode = 1
 offset_left = 27.7
 offset_top = 449.1
-offset_right = -764.30005
+offset_right = -764.3
 offset_bottom = -48.900024
 rotation = 0.10471976
 

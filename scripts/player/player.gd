@@ -47,6 +47,9 @@ func _ready():
 
 
 func _physics_process(delta):
+	if blood_spawn_point.get_child_count():
+		hp -= 1.5*delta*blood_spawn_point.get_child_count()
+	hp = max(hp,0)
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
@@ -97,12 +100,17 @@ func _input(event):
 
 
 
+
 func spawn_blood(pos: Vector3):
 	var p = BLOOD_STREAM.instantiate()
-	add_child(p)
+	blood_spawn_point.add_child(p)
 	
 	p.global_position = pos
 	p.rotate(Vector3(0,1,0), randf_range(0, 2*PI))
+	
+func stop_bleed(n):
+	for i in range(min(blood_spawn_point.get_child_count(),n)):
+		blood_spawn_point.get_child(i).queue_free()
 
 func damage(dmg,push_force,from_pos,_blood_point):
 	hp -= dmg

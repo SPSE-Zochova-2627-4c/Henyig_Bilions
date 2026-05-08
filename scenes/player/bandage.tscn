@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://c7v1ttx17pyes"]
+
+[ext_resource type="Script" uid="uid://b5s7rk417q6n0" path="res://scripts/player/bandage.gd" id="1_q8b1b"]
+[ext_resource type="Texture2D" uid="uid://ydhsfvgkgiq0" path="res://art/inventory/palm_empty.png" id="2_rsbhw"]
+[ext_resource type="Texture2D" uid="uid://cg0b5dkj8f7pu" path="res://art/inventory/hand_closed.png" id="3_ddsky"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sssyf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rsbhw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rsbhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ddsky")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[node name="Bandage" type="Control" unique_id=2105608798]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q8b1b")
+
+[node name="item" type="AnimatedSprite2D" parent="." unique_id=939881809]
+position = Vector2(576, 500)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_sssyf")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="DamageLabel" type="Label" parent="." unique_id=2082787988]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -553.0
+offset_top = -34.5
+offset_right = -114.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "-1 BLEED"
+horizontal_alignment = 2
+
+[node name="AmmoLabel" type="Label" parent="." unique_id=2089772732]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 114.0
+offset_top = -34.5
+offset_right = 469.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "5"
+
+[node name="Label" type="Label" parent="." unique_id=276961795]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 432.0
+offset_right = 683.0
+offset_bottom = 501.0
+theme_override_font_sizes/font_size = 50
+text = "BANDAGE"

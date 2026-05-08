@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dw1f13o6okpsq"]
 
 [ext_resource type="Texture2D" uid="uid://dkvb0e4ps6x6f" path="res://art/inventory/inv_bg.png" id="1_hpcy8"]
-[ext_resource type="Script" uid="uid://c1nmm712gg2ud" path="res://scripts/inventory/inv_gun.gd" id="1_jn6dc"]
 [ext_resource type="PackedScene" uid="uid://dlejosg7wi5rg" path="res://scenes/inventory/inv_slot.tscn" id="2_jn6dc"]
 
 [node name="InvGun" type="Control" unique_id=1146695420]
@@ -13,7 +12,6 @@ offset_right = -792.0
 offset_bottom = -565.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jn6dc")
 
 [node name="bg" type="Sprite2D" parent="." unique_id=558276001]
 scale = Vector2(1.1999999, 0.27666667)
