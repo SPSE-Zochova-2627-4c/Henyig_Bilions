@@ -13,7 +13,7 @@ func update(item: InventoryItem):
 		item_sprite.visible = false
 	else:
 		item_sprite.texture = item.texture
-		item_sprite.apply_scale(Vector2(0.1,0.1))
+		item_sprite.scale = (Vector2(0.1,0.1))
 		item_sprite.visible = true
 
 func select():

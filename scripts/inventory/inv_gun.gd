@@ -23,25 +23,62 @@ var slot_selected = null
 
 func _ready() -> void:
 	update_slots()
+	add_item(load("res://scripts/inventory/items/knife_item.tres"),1)
+	add_item(load("res://scripts/inventory/items/rpg_item.tres"),1)
+	add_item(load("res://scripts/inventory/items/pistol_item.tres"),1)
+	add_item(load("res://scripts/inventory/items/bandage_item.tres"),5)
+	add_item(load("res://scripts/inventory/items/heal_item.tres"),5)
+
 	add_child(in_hand)
 	slot_selected = gun_slots[1]
+	
+func add_item(itm,amount):
+	var in_inv = false
+	for i in range(inventory.slots.size()):
+		if inventory.slots[i].item == itm:
+			in_inv = true
+	if itm.is_weapon and not in_inv:
+		for i in range(5):
+			if not inventory.slots[i].item:
+				inventory.slots[i].item = itm
+				break
+	elif not in_inv:
+		for i in range(10):
+			if not inventory.slots[i+5].item:
+				inventory.slots[i+5].item = itm
+				inventory.slots[i+5].amount = amount
+				break
+	else:
+		for i in range(10):
+			if inventory.slots[i+5].item == itm:
+				inventory.slots[i+5].amount += amount
+				break
+	update_slots()
 
 func update_slots():
-	for slot in range(gun_slots.size()):
-		gun_slots[slot].update(inventory.items[slot])
-		if inventory.items[slot]:
-			weapon_list[slot] = load(inventory.items[slot].uid)
+	for i in range(gun_slots.size()):
+		gun_slots[i].update(inventory.slots[i].item)
+		if inventory.slots[i].item:
+			weapon_list[i] = load(inventory.slots[i].item.uid)
+		else:
+			weapon_list[i] = null
 			
-	for slot in range(gun_slots.size(),itm_slots.size()+gun_slots.size()):
-		itm_slots[slot-5].update(inventory.items[slot])
-		if inventory.items[slot]:
-			item_list[slot-5] = load(inventory.items[slot].uid)
+	for i in range(gun_slots.size(),itm_slots.size()+gun_slots.size()):
+		itm_slots[i-5].update(inventory.slots[i].item)
+		if inventory.slots[i].item:
+			item_list[i-5] = load(inventory.slots[i].item.uid)
+		else:
+			item_list[i-5] = null
 
-
+func clear_slot(num):
+	inventory.slots[num].item = null
+	update_slots()
 
 
 func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("quick_switch"):
+	if event.is_action_pressed("quick_switch"):
+		print(inventory.slots[5].amount)
+		update_slots()
 		#var values = [prev_hand_scene, in_hand_scene]
 		#swap(values)
 		#swap_to(prev_hand_scene)
@@ -95,7 +132,8 @@ func _input(event: InputEvent) -> void:
 func swap_to_w(n):
 	if weapon_list[n-1]:
 		slot_selected.deselect()
-		in_hand.queue_free()
+		if in_hand:
+			in_hand.queue_free()
 		in_hand = weapon_list[n-1].instantiate()
 		canvas_layer.add_child(in_hand)
 		slot_selected = gun_slots[n-1]
@@ -104,8 +142,10 @@ func swap_to_w(n):
 func swap_to_i(n):
 	if item_list[n-1]:
 		slot_selected.deselect()
-		in_hand.queue_free()
+		if in_hand:
+			in_hand.queue_free()
 		in_hand = item_list[n-1].instantiate()
+		in_hand.set_slot(inventory.slots[n+4],n+4)
 		canvas_layer.add_child(in_hand)
 		slot_selected = itm_slots[n-1]
 		slot_selected.select()

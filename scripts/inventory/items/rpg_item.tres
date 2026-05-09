@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GunInventoryItem" format=3 uid="uid://c1oy0j0txktuw"]
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://c1oy0j0txktuw"]
 
 [ext_resource type="Script" uid="uid://7gtfro0ga3ow" path="res://scripts/inventory/inventory_item.gd" id="1_31k05"]
 [ext_resource type="Texture2D" uid="uid://eu0dn4wgp16h" path="res://art/rpg/rpg.png" id="2_austs"]
@@ -8,4 +8,5 @@ script = ExtResource("1_31k05")
 name = "rpg"
 texture = ExtResource("2_austs")
 uid = "uid://jcobrh6oadkh"
+is_weapon = true
 metadata/_custom_type_script = "uid://7gtfro0ga3ow"

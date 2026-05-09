@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dlus8k5iwdxf4" path="res://scenes/wall.tscn" id="5_0dnla"]
 [ext_resource type="PackedScene" uid="uid://cs7jpjbh4e1gh" path="res://scenes/enemies/rocketeer.tscn" id="6_k075t"]
 [ext_resource type="PackedScene" uid="uid://ba0u6t6pv8lqo" path="res://scenes/enemies/zombie.tscn" id="6_nfx0i"]
+[ext_resource type="PackedScene" uid="uid://ijmysm4yvw0c" path="res://scenes/pickup_items/dmg_pickup.tscn" id="7_nfx0i"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_k075t"]
 vertices = PackedVector3Array(-18.75, 1, 24, -18.75, 1, 16.5, -19.5, 1, 16.5, -20.25, 1, 15.75, -49, 1, 24, -18.25, 1, 9.25, -17.5, 1, 10.25, -13, 1, 1.75, -14, 1, 1, -19.5, 1, 9.25, -20.25, 1, 10, -14, 1, -9.75, -13, 1, -10.5, -13, 1, -24, -49, 1, -24, -9, 1, -10.5, -8.5, 1, -9.75, -2.75, 1, -10.25, -2.75, 1, -16, -2, 1, -16.75, -0.25, 1, -16.75, -0.25, 1, -24, -9, 1.25, -8.5, -2, 1, -9.5, 2, 1, -10.25, 1.25, 1, -9.5, -8.5, 1, 1.25, 1.25, 1, -16.75, 2, 1, -16, 49, 1, -24, -17.5, 1, 15.75, -10.75, 3, -8.5, -10.75, 3, -0.25, -9, 1.25, -0.25, -9, 1, 1.75, 49, 1, 24, -2.25, 5, -14.75, -2.25, 5, -11.5, 0, 2.75, -11.5, 0, 2.75, -14.75, 3.5, 8.5, -10, 3.5, 8.5, -1.75, 11.75, 8.5, -1.75, 11.75, 8.5, -10, -15.5, 7.75, -8.5, -15.5, 7.75, -0.25, -14.025002, 6, -7.0249996)
@@ -82,3 +83,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.205132, 1.6, 15.295364)
 
 [node name="Zombie4" parent="." unique_id=946052550 instance=ExtResource("6_nfx0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.099154, 1.6000005, 5.785286)
+
+[node name="DMGPickup" parent="." unique_id=1276404982 instance=ExtResource("7_nfx0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.807306, 1.4076438, 6.353853)

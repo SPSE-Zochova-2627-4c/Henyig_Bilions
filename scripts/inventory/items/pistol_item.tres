@@ -8,4 +8,5 @@ script = ExtResource("1_0xn1l")
 name = "pistol"
 texture = ExtResource("2_8u72a")
 uid = "uid://dureo6lwixg0"
+is_weapon = true
 metadata/_custom_type_script = "uid://7gtfro0ga3ow"

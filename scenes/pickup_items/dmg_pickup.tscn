@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ijmysm4yvw0c"]
+
+[ext_resource type="Texture2D" uid="uid://wsw6tlpg3jcy" path="res://art/inventory/dmg_item.png" id="1_bix6i"]
+[ext_resource type="Script" uid="uid://byhscf2eehkfe" path="res://scripts/pickup_items/dmg_pickup.gd" id="2_66pnq"]
+[ext_resource type="Resource" uid="uid://mqqbkfef5731" path="res://scripts/inventory/items/dmg_boost.tres" id="3_45t3m"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_66pnq"]
+
+[node name="DMGPickup" type="Sprite3D" unique_id=1276404982]
+pixel_size = 0.002
+billboard = 1
+texture = ExtResource("1_bix6i")
+script = ExtResource("2_66pnq")
+pickup = ExtResource("3_45t3m")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1318804475]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=524201335]
+shape = SubResource("SphereShape3D_66pnq")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

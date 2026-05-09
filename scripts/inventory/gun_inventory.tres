@@ -1,15 +1,69 @@
 [gd_resource type="Resource" script_class="Inventory" format=3 uid="uid://cbxxfhkuhs0kl"]
 
-[ext_resource type="Script" uid="uid://7gtfro0ga3ow" path="res://scripts/inventory/inventory_item.gd" id="1_qogtm"]
-[ext_resource type="Resource" uid="uid://bmbbcioio318c" path="res://scripts/inventory/items/knife_item.tres" id="2_f3fll"]
-[ext_resource type="Resource" uid="uid://bwoimycs8dmsm" path="res://scripts/inventory/items/pistol_item.tres" id="2_kqmg5"]
+[ext_resource type="Script" uid="uid://wnl56lxcysqe" path="res://scripts/inventory/inventory_slot.gd" id="1_82qob"]
 [ext_resource type="Script" uid="uid://cflgt14ae1ifi" path="res://scripts/inventory/inventory.gd" id="3_f3fll"]
-[ext_resource type="Resource" uid="uid://c1oy0j0txktuw" path="res://scripts/inventory/items/rpg_item.tres" id="4_wvn0w"]
-[ext_resource type="Resource" uid="uid://mqqbkfef5731" path="res://scripts/inventory/items/dmg_boost.tres" id="5_l724c"]
-[ext_resource type="Resource" uid="uid://d13117rccxnfi" path="res://scripts/inventory/items/heal_item.tres" id="6_fy81u"]
-[ext_resource type="Resource" uid="uid://c1nc6q7lfrv8x" path="res://scripts/inventory/items/bandage_item.tres" id="7_fy81u"]
+
+[sub_resource type="Resource" id="Resource_82qob"]
+script = ExtResource("1_82qob")
+metadata/_custom_type_script = "uid://wnl56lxcysqe"
+
+[sub_resource type="Resource" id="Resource_qogtm"]
+script = ExtResource("1_82qob")
+metadata/_custom_type_script = "uid://wnl56lxcysqe"
+
+[sub_resource type="Resource" id="Resource_kqmg5"]
+script = ExtResource("1_82qob")
+metadata/_custom_type_script = "uid://wnl56lxcysqe"
+
+[sub_resource type="Resource" id="Resource_f3fll"]
+script = ExtResource("1_82qob")
+metadata/_custom_type_script = "uid://wnl56lxcysqe"
+
+[sub_resource type="Resource" id="Resource_wvn0w"]
+script = ExtResource("1_82qob")
+metadata/_custom_type_script = "uid://wnl56lxcysqe"
+
+[sub_resource type="Resource" id="Resource_l724c"]
+script = ExtResource("1_82qob")
+metadata/_custom_type_script = "uid://wnl56lxcysqe"
+
+[sub_resource type="Resource" id="Resource_fy81u"]
+script = ExtResource("1_82qob")
+metadata/_custom_type_script = "uid://wnl56lxcysqe"
+
+[sub_resource type="Resource" id="Resource_86yli"]
+script = ExtResource("1_82qob")
+metadata/_custom_type_script = "uid://wnl56lxcysqe"
+
+[sub_resource type="Resource" id="Resource_sgwcl"]
+script = ExtResource("1_82qob")
+metadata/_custom_type_script = "uid://wnl56lxcysqe"
+
+[sub_resource type="Resource" id="Resource_utgsg"]
+script = ExtResource("1_82qob")
+metadata/_custom_type_script = "uid://wnl56lxcysqe"
+
+[sub_resource type="Resource" id="Resource_j12gq"]
+script = ExtResource("1_82qob")
+metadata/_custom_type_script = "uid://wnl56lxcysqe"
+
+[sub_resource type="Resource" id="Resource_uc6ug"]
+script = ExtResource("1_82qob")
+metadata/_custom_type_script = "uid://wnl56lxcysqe"
+
+[sub_resource type="Resource" id="Resource_6qosk"]
+script = ExtResource("1_82qob")
+metadata/_custom_type_script = "uid://wnl56lxcysqe"
+
+[sub_resource type="Resource" id="Resource_qmqv6"]
+script = ExtResource("1_82qob")
+metadata/_custom_type_script = "uid://wnl56lxcysqe"
+
+[sub_resource type="Resource" id="Resource_bv0xy"]
+script = ExtResource("1_82qob")
+metadata/_custom_type_script = "uid://wnl56lxcysqe"
 
 [resource]
 script = ExtResource("3_f3fll")
-items = Array[ExtResource("1_qogtm")]([ExtResource("2_f3fll"), ExtResource("2_kqmg5"), ExtResource("4_wvn0w"), null, null, ExtResource("5_l724c"), ExtResource("6_fy81u"), ExtResource("7_fy81u"), null, null, null, null, null, null, null])
+slots = Array[ExtResource("1_82qob")]([SubResource("Resource_82qob"), SubResource("Resource_qogtm"), SubResource("Resource_kqmg5"), SubResource("Resource_f3fll"), SubResource("Resource_wvn0w"), SubResource("Resource_l724c"), SubResource("Resource_fy81u"), SubResource("Resource_86yli"), SubResource("Resource_sgwcl"), SubResource("Resource_utgsg"), SubResource("Resource_j12gq"), SubResource("Resource_uc6ug"), SubResource("Resource_6qosk"), SubResource("Resource_qmqv6"), SubResource("Resource_bv0xy")])
 metadata/_custom_type_script = "uid://cflgt14ae1ifi"
