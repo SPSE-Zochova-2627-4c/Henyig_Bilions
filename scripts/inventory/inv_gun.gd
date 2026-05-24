@@ -24,8 +24,8 @@ var slot_selected = null
 func _ready() -> void:
 	update_slots()
 	add_item(load("res://scripts/inventory/items/knife_item.tres"),1)
-	add_item(load("res://scripts/inventory/items/rpg_item.tres"),1)
 	add_item(load("res://scripts/inventory/items/pistol_item.tres"),1)
+	add_item(load("res://scripts/inventory/items/rpg_item.tres"),1)
 	add_item(load("res://scripts/inventory/items/bandage_item.tres"),5)
 	add_item(load("res://scripts/inventory/items/heal_item.tres"),5)
 

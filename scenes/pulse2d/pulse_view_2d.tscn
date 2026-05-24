@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://hof0l1gclcmg"]
+
+[ext_resource type="Script" uid="uid://tyneq4b3ygxm" path="res://scripts/pulse2d/pulse_view_2d.gd" id="1_3vkrx"]
+
+[node name="PulseView2D" type="Node2D" unique_id=1693839686]
+script = ExtResource("1_3vkrx")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1622398005]
+width = 2.0
+default_color = Color(0.3647059, 0.9411765, 0.41568628, 1)

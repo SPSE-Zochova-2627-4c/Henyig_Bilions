@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dw1f13o6okpsq" path="res://scenes/inventory/inv_gun.tscn" id="14_fcs02"]
 [ext_resource type="Script" uid="uid://c1nmm712gg2ud" path="res://scripts/inventory/inv_gun.gd" id="15_uf5tr"]
 [ext_resource type="PackedScene" uid="uid://dg8tlml1f88yy" path="res://scenes/inventory/item_inventory.tscn" id="16_kvlxm"]
+[ext_resource type="PackedScene" uid="uid://hof0l1gclcmg" path="res://scenes/pulse2d/pulse_view_2d.tscn" id="19_lgqa7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_65nyi"]
 height = 2.2
@@ -132,7 +133,8 @@ position = Vector2(1015, 230)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_8ydkj")
 autoplay = "default"
-frame_progress = 0.09473715
+frame = 5
+frame_progress = 0.79785585
 
 [node name="BloodLevel" type="TextureProgressBar" parent="Camera3D/CanvasLayer" unique_id=1053348681]
 anchors_preset = 1
@@ -193,6 +195,9 @@ offset_top = 449.1
 offset_right = -764.3
 offset_bottom = -48.900024
 rotation = 0.10471976
+
+[node name="PulseView2D" parent="Camera3D/CanvasLayer" unique_id=1693839686 instance=ExtResource("19_lgqa7")]
+position = Vector2(950, 100)
 
 [node name="Marker3D" type="Marker3D" parent="Camera3D" unique_id=1591165490]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.53362817)
