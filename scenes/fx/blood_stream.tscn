@@ -42,6 +42,22 @@ sub_emitter_amount_at_collision = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_frkm1"]
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_wpo4n"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_c6qgf"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 4.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nyv2q"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 20.0
+rings = 10
+
 [node name="blood_stream" type="Node3D" unique_id=1366203507]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_llcfr")
@@ -65,3 +81,20 @@ target_position = Vector3(4, -20, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1792580174]
 transform = Transform3D(-0.1736482, -0.7878462, 0, 0.9848077, -0.13891856, 0, 0, 0, 1, 0.2, 0.1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=335001323]
+transform = Transform3D(0.14763679, 0.9890416, -3.725798e-08, -0.9890416, 0.14763679, -4.3232383e-08, -3.725798e-08, 4.3232387e-08, 1, 0.60360277, 0.16284688, 2.6384315e-08)
+visible = false
+mesh = SubResource("CylinderMesh_wpo4n")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=94581740]
+transform = Transform3D(-0.8339533, 0.5518352, -8.0164654e-08, -0.5518352, -0.8339533, -2.4121487e-08, -8.0164654e-08, 2.4121485e-08, 1, 2.0990157, -1.4379874, 9.175089e-08)
+visible = false
+mesh = SubResource("CylinderMesh_c6qgf")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1110858330]
+transform = Transform3D(0.98261607, -0.18564951, -7.5986506e-10, 0.18564951, 0.98261607, 8.115011e-09, -7.598757e-10, -8.115007e-09, 1, 4.8682413, -12.667171, 2.1279756e-07)
+visible = false
+mesh = SubResource("CylinderMesh_nyv2q")
+skeleton = NodePath("../MeshInstance3D")

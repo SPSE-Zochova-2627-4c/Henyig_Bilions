@@ -33,7 +33,8 @@ script = ExtResource("1_00lji")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.519497, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1970513010]
-transform = Transform3D(1, 0, 0, 0, -0.799139, 0.601146, 0, -0.601146, -0.799139, 0, 5.00495, -30.9253)
+transform = Transform3D(0.93414843, -1.5599928e-08, 0.35688475, -0.35688475, -4.0832926e-08, 0.93414843, 0, -1, -4.371139e-08, 0, 37.657204, -3.892108)
+shadow_enabled = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=539194700]
 navigation_mesh = SubResource("NavigationMesh_k075t")

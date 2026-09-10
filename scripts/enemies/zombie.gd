@@ -21,6 +21,11 @@ var bleed_threshold = {140:true,120:true,80:true,40:true}
 
 
 
+
+func _ready():
+	$monster1/AnimationPlayer.speed_scale = 1.3
+	$monster1/AnimationPlayer.play("metarigAction")
+
 func _physics_process(delta):
 	look_at(Vector3(target.global_position.x,self.global_position.y,target.global_position.z))
 	
