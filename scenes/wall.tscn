@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dlus8k5iwdxf4"]
 
-[ext_resource type="Texture2D" uid="uid://cwld5lao4a1ym" path="res://art/texture1.png" id="1_wykyb"]
+[ext_resource type="Texture2D" uid="uid://cm1xl7o4qm7lo" path="res://art/texture1.png" id="1_wykyb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ktk7"]
 size = Vector3(0.5, 10, 10)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e00m8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wykyb"]
 albedo_texture = ExtResource("1_wykyb")
 
 [sub_resource type="BoxMesh" id="BoxMesh_tdtm6"]
@@ -20,5 +20,5 @@ shape = SubResource("BoxShape3D_2ktk7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=503931765]
 layers = 129
-material_override = SubResource("StandardMaterial3D_e00m8")
+material_override = SubResource("StandardMaterial3D_wykyb")
 mesh = SubResource("BoxMesh_tdtm6")

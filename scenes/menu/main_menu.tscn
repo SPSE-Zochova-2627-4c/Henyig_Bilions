@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://360shhrjqf8l"]
+
+[ext_resource type="Script" uid="uid://ckhn7fwnp0hrv" path="res://scripts/menu/main_menu.gd" id="1_nl8w3"]
+
+[node name="MainMenu" type="Control" unique_id=992502487]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nl8w3")
+
+[node name="Label" type="Label" parent="." unique_id=1664801445]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -224.0
+offset_right = 224.0
+offset_bottom = 137.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "BILLIONS"
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1212956885]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -136.0
+offset_right = 95.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="GridContainer" unique_id=1857076502]
+custom_minimum_size = Vector2(190, 88)
+layout_mode = 2
+text = "START"
+
+[node name="SettingsButton" type="Button" parent="GridContainer" unique_id=1025269174]
+custom_minimum_size = Vector2(190, 88)
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="ExitButton" type="Button" parent="GridContainer" unique_id=1290221717]
+custom_minimum_size = Vector2(190, 88)
+layout_mode = 2
+text = "EXIT"
+
+[connection signal="pressed" from="GridContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="GridContainer/ExitButton" to="." method="_on_exit_button_pressed"]

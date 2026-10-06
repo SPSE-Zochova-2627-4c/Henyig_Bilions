@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://g2mq7uqhf28t"]
 
-[ext_resource type="Script" uid="uid://ch7rtbwm8yik2" path="res://scripts/map_1.gd" id="1_00lji"]
+[ext_resource type="Script" uid="uid://ch7rtbwm8yik2" path="res://scripts/levels/map_1.gd" id="1_00lji"]
 [ext_resource type="PackedScene" uid="uid://cm4xai5es7y8c" path="res://scenes/player/player.tscn" id="1_k1nnb"]
-[ext_resource type="Texture2D" uid="uid://cwld5lao4a1ym" path="res://art/texture1.png" id="1_sxjc7"]
+[ext_resource type="Texture2D" uid="uid://cm1xl7o4qm7lo" path="res://art/texture1.png" id="1_sxjc7"]
 [ext_resource type="PackedScene" uid="uid://dlus8k5iwdxf4" path="res://scenes/wall.tscn" id="5_0dnla"]
 [ext_resource type="PackedScene" uid="uid://cs7jpjbh4e1gh" path="res://scenes/enemies/rocketeer.tscn" id="6_k075t"]
 [ext_resource type="PackedScene" uid="uid://ba0u6t6pv8lqo" path="res://scenes/enemies/zombie.tscn" id="6_nfx0i"]

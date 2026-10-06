@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://63rwav5tv0o5"]
+
+[ext_resource type="Script" uid="uid://vygfy1e3hluf" path="res://scripts/menu/levels.gd" id="1_prgp8"]
+
+[node name="Levels" type="Control" unique_id=992502487]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_prgp8")
+
+[node name="Label" type="Label" parent="." unique_id=1664801445]
+layout_mode = 1
+offset_right = 448.0
+offset_bottom = 137.0
+theme_override_font_sizes/font_size = 50
+text = "Levels"
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=2011057747]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 1025.0
+offset_bottom = 200.0
+columns = 4
+
+[node name="Lvl0" type="Button" parent="GridContainer" unique_id=441417880]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "0"
+
+[node name="Lvl1" type="Button" parent="GridContainer" unique_id=906332821]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "1"
+
+[node name="Back" type="Button" parent="." unique_id=7770690]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_right = 200.0
+grow_vertical = 0
+text = "BACK"
+
+[connection signal="pressed" from="GridContainer/Lvl0" to="." method="_on_lvl_0_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

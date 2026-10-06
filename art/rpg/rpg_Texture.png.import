@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm1xl7o4qm7lo"
-path.s3tc="res://.godot/imported/texture1.png-402236e5c100773f737897f5c858da56.s3tc.ctex"
+uid="uid://dg6hchk2jaqpo"
+path.s3tc="res://.godot/imported/rpg_Texture.png-304601e2b06956f33c72c9ced9cb35cb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "55c91a583d7f5ab040d732deea2b0395"
+}
 
 [deps]
 
-source_file="res://art/texture1.png"
-dest_files=["res://.godot/imported/texture1.png-402236e5c100773f737897f5c858da56.s3tc.ctex"]
+source_file="res://art/rpg/rpg_Texture.png"
+dest_files=["res://.godot/imported/rpg_Texture.png-304601e2b06956f33c72c9ced9cb35cb.s3tc.ctex"]
 
 [params]
 
